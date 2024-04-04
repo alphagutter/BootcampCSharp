@@ -1,0 +1,86 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|c:\\users\\bootcamp-4\\source\\repos\\bootcampapi2\\bootcampcsharp\\infrastructure\\configurations\\customerconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\configurations\\customerconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB91BAED-81FA-4D46-8628-08E691506F2A}|WebApi\\WebApi.csproj|c:\\users\\bootcamp-4\\source\\repos\\bootcampapi2\\bootcampcsharp\\webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FB91BAED-81FA-4D46-8628-08E691506F2A}|WebApi\\WebApi.csproj|solutionrelative:webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|c:\\users\\bootcamp-4\\source\\repos\\bootcampapi2\\bootcampcsharp\\infrastructure\\configurations\\bankconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\configurations\\bankconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|c:\\users\\bootcamp-4\\source\\repos\\bootcampapi2\\bootcampcsharp\\infrastructure\\configurations\\accountconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\configurations\\accountconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CustomerConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Configurations\\CustomerConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Configurations\\CustomerConfiguration.cs",
+              "ToolTip": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Configurations\\CustomerConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Configurations\\CustomerConfiguration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T16:40:15.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BankConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Configurations\\BankConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Configurations\\BankConfiguration.cs",
+              "ToolTip": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Configurations\\BankConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Configurations\\BankConfiguration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T16:38:40.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AccountConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Configurations\\AccountConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Configurations\\AccountConfiguration.cs",
+              "ToolTip": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Configurations\\AccountConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Configurations\\AccountConfiguration.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T16:02:08.992Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\WebApi\\appsettings.json",
+              "RelativeDocumentMoniker": "WebApi\\appsettings.json",
+              "ToolTip": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\WebApi\\appsettings.json",
+              "RelativeToolTip": "WebApi\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-04T15:44:56.723Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
