@@ -18,15 +18,13 @@ public class Customer
 
     public string? Phone { get; set; }
 
-    public CustomerStatus Status { get; set; } = CustomerStatus.Active;
+    public CustomerStatus CustomerStatus { get; set; } = CustomerStatus.Active;
 
 
     //foreign keys
     public int BankId { get; set; }
+    public DateTime? Birth { get; set; }
 
-    //object
     public virtual Bank Bank { get; set; } = null!;
-
-    //collections
     public ICollection<Account> Accounts { get; set; } = new List<Account>();
 }

@@ -1,7 +1,6 @@
 ﻿using Core.Entities;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Configurations;
 
@@ -9,26 +8,44 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 {
     public void Configure(EntityTypeBuilder<Customer> entity)
     {
-
-        ///categorized by int type
         entity
-            .HasKey(e => e.Id).HasName("Customer_pkey");
+            .HasKey(e => e.Id)
+            .HasName("Customer_pkey");
 
-        ///categorized by string type
-        entity.Property(Customer => Customer.Name).HasMaxLength(100).IsRequired();
-        entity.Property(Customer => Customer.Lastname).HasMaxLength(100);
-        entity.Property(Customer => Customer.DocumentNumber).HasMaxLength(100).IsRequired();
-        entity.Property(Customer => Customer.Address).HasMaxLength(100);
-        entity.Property(Customer => Customer.Mail).HasMaxLength(100);
-        entity.Property(Customer => Customer.Phone).HasMaxLength(100);
-
-
-        ///categorized by objects
         entity
-            .HasOne(Bank => Bank.Bank)
-            .WithMany(Bank => Bank.Customers)
-            .HasForeignKey(bank => bank.Id);
+            .Property(e => e.Name)
+            .HasMaxLength(200)
+            .IsRequired();
 
+        entity
+            .Property(e => e.Lastname)
+            .HasMaxLength(200);
 
+        entity
+            .Property(e => e.DocumentNumber)
+            .HasMaxLength(200)
+            .IsRequired();
+
+        entity
+            .Property(e => e.Address)
+            .HasMaxLength(300);
+
+        entity
+            .Property(e => e.Mail)
+            .HasMaxLength(200);
+
+        entity
+            .Property(e => e.Phone)
+            .HasMaxLength(200);
+
+        entity
+            .HasOne(d => d.Bank)
+            .WithMany(p => p.Customers)
+            .HasForeignKey(d => d.BankId);
+
+        entity
+            .HasMany(d => d.Accounts)
+            .WithOne(p => p.Customer)
+            .HasForeignKey(d => d.CustomerId);
     }
 }

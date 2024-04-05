@@ -8,23 +8,31 @@ public class BankConfiguration : IEntityTypeConfiguration<Bank>
 {
     public void Configure(EntityTypeBuilder<Bank> entity)
     {
+        entity.HasKey(e => e.Id).HasName("Bank_pkey");
 
-        ///categorized by int type
         entity
-            .HasKey(e => e.Id).HasName("Bank_pkey");
+            .Property(e => e.Address)
+            .HasMaxLength(400)
+            .IsRequired();
 
-        ///categorized by string type
-        entity.Property(e => e.Name).HasMaxLength(100);
-        entity.Property(e => e.Phone).HasMaxLength(20);
-        entity.Property(e => e.Mail).HasMaxLength(100);
-        entity.Property(e => e.Address).HasMaxLength(255);
-
-
-        ///categorized by collections
         entity
-            .HasMany(Bank => Bank.Customers)
-            .WithOne(Bank => Bank.Bank)
-            .HasForeignKey(bank => bank.Id);
+            .Property(e => e.Mail)
+            .HasMaxLength(100)
+            .IsRequired();
 
+        entity
+            .Property(e => e.Name)
+            .HasMaxLength(300)
+            .IsRequired();
+
+        entity
+            .Property(e => e.Phone)
+            .HasMaxLength(150)
+            .IsRequired();
+
+        entity
+            .HasMany(bank => bank.Customers)
+            .WithOne(customer => customer.Bank)
+            .HasForeignKey(customer => customer.BankId);
     }
 }

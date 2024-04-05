@@ -31,17 +31,27 @@ public static class DependencyInjection
 
         return services;
     }
-
+    
+    /// <summary>
+    /// Adds all the repositories for the tables, then are called for the services
+    /// </summary>
     public static IServiceCollection AddRepositories(this IServiceCollection services)
     {
         services.AddScoped<IBankRepository, BankRepository>();
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
+
 
         return services;
     }
 
+    /// <summary>
+    /// Adds all the services for the tables
+    /// </summary>
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
         services.AddScoped<IBankService, BankService>();
+        services.AddScoped<ICustomerService, CustomerService>();
+
 
         return services;
     }

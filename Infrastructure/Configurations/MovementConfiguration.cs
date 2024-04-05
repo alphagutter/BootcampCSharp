@@ -8,23 +8,17 @@ public class MovementConfiguration : IEntityTypeConfiguration<Movement>
 {
     public void Configure(EntityTypeBuilder<Movement> entity)
     {
-        entity.HasKey(e => e.Id).HasName("Movement_pkey");                      //int
-        entity.Property(Movement => Movement.Amount);                           //decimal
-
-        entity.Property(Movement => Movement.Destination).HasMaxLength(100).IsRequired();
-
-
-        entity.Property(Movement => Movement.TransferredDateTime);
-
-        entity.Property(Movement => Movement.TransferStatus);
-
-
-
+        entity
+            .HasKey(e => e.Id)
+            .HasName("Movements_pkey");
 
         entity
-            .HasOne(Movement => Movement.Account)
-            .WithMany(Movement => Movement.Movements)
-            .HasForeignKey(Movement => Movement.Id);
+            .Property(e => e.Destination)
+            .HasMaxLength(150);
 
+        entity
+            .HasOne(x => x.Account)
+            .WithMany(x => x.Movements)
+            .HasForeignKey(x => x.AccountId);
     }
 }

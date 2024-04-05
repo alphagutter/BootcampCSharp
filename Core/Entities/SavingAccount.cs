@@ -5,20 +5,9 @@ namespace Core.Entities;
 public class SavingAccount
 {
     public int Id { get; set; }
-
+    public SavingType SavingType { get; set; } = SavingType.Insight;
     public string HolderName { get; set; } = string.Empty;
 
-
-
-    // objects
-    public SavingType SavingType { get; set; } = SavingType.Insight;
-
-
-    public Account Account { get; set; } = null!;
-
-
-    //foreign key
     public int AccountId { get; set; }
-    
-    
+    public Account Account { get; set; } = null!;
 }

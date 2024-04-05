@@ -1,4 +1,5 @@
 ﻿using Core.Models;
+using Core.Requests.BankModel;
 
 namespace Core.Interfaces.Repositories;
 

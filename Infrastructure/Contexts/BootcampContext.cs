@@ -44,6 +44,7 @@ public partial class BootcampContext : DbContext
 
         modelBuilder.ApplyConfiguration(new CurrentAccountConfiguration());
 
+        modelBuilder.ApplyConfiguration(new CurrencyConfiguration());
 
         modelBuilder.ApplyConfiguration(new MovementConfiguration());
 

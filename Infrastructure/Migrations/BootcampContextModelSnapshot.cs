@@ -75,8 +75,8 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)");
+                        .HasMaxLength(400)
+                        .HasColumnType("character varying(400)");
 
                     b.Property<string>("Mail")
                         .IsRequired()
@@ -85,13 +85,13 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)");
 
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)");
 
                     b.HasKey("Id")
                         .HasName("Bank_pkey");
@@ -108,16 +108,18 @@ namespace Infrastructure.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("BuyValue")
-                        .HasColumnType("numeric");
+                        .HasColumnType("numeric(20,5)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<decimal>("SellValue")
-                        .HasColumnType("numeric");
+                        .HasColumnType("numeric(20,5)");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("Currency_pkey");
 
                     b.ToTable("Currency");
                 });
@@ -134,15 +136,12 @@ namespace Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.Property<decimal?>("Interest")
-                        .HasPrecision(20, 5)
-                        .HasColumnType("numeric(20,5)");
+                        .HasColumnType("numeric(10,5)");
 
                     b.Property<decimal?>("MonthAverage")
-                        .HasPrecision(20, 5)
                         .HasColumnType("numeric(20,5)");
 
                     b.Property<decimal?>("OperationalLimit")
-                        .HasPrecision(20, 5)
                         .HasColumnType("numeric(20,5)");
 
                     b.HasKey("Id")
@@ -156,42 +155,50 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Core.Entities.Customer", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
                     b.Property<string>("Address")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)");
 
                     b.Property<int>("BankId")
                         .HasColumnType("integer");
 
+                    b.Property<DateTime?>("Birth")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("CustomerStatus")
+                        .HasColumnType("integer");
+
                     b.Property<string>("DocumentNumber")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
                     b.Property<string>("Lastname")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
                     b.Property<string>("Mail")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
                     b.Property<string>("Phone")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
                     b.HasKey("Id")
                         .HasName("Customer_pkey");
+
+                    b.HasIndex("BankId");
 
                     b.ToTable("Customers");
                 });
@@ -199,7 +206,10 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Core.Entities.Movement", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccountId")
                         .HasColumnType("integer");
@@ -209,8 +219,8 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("Destination")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)");
 
                     b.Property<int>("TransferStatus")
                         .HasColumnType("integer");
@@ -219,7 +229,9 @@ namespace Infrastructure.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id")
-                        .HasName("Movement_pkey");
+                        .HasName("Movements_pkey");
+
+                    b.HasIndex("AccountId");
 
                     b.ToTable("Movements");
                 });
@@ -227,7 +239,10 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Core.Entities.SavingAccount", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccountId")
                         .HasColumnType("integer");
@@ -242,6 +257,8 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id")
                         .HasName("SavingAccount_pkey");
+
+                    b.HasIndex("AccountId");
 
                     b.ToTable("SavingAccounts");
                 });
@@ -280,7 +297,7 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Core.Entities.Bank", "Bank")
                         .WithMany("Customers")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("BankId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -291,7 +308,7 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Core.Entities.Account", "Account")
                         .WithMany("Movements")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -302,7 +319,7 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Core.Entities.Account", "Account")
                         .WithMany("SavingAccounts")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
