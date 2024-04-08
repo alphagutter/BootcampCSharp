@@ -1,4 +1,5 @@
-﻿using Core.Models;
+﻿using Core.Constants;
+using Core.Models;
 
 namespace Core.Requests.CustomerModel;
 
@@ -8,15 +9,13 @@ namespace Core.Requests.CustomerModel;
 /// </summary>
 public class CreateCustomerModel
 {
-    public string? Name { get; set; }
+    public string Name { get; set; } = string.Empty;            //required
     public string? Lastname { get; set; }
-    //document cannot be null
-    public string DocumentNumber { get; set; } = string.Empty;
+    public string DocumentNumber { get; set; } = string.Empty;  //required
     public string? Address { get; set; }
-    public string? Mail { get; set; }
+    public string? Mail { get; set; }                           //has to be valid
     public string? Phone { get; set; }
-    //customer status cannot be null
-    public string CustomerStatus { get; set; } = string.Empty;
+    public string CustomerStatus { get; set; } = string.Empty;  //has to be one of the valid Statuses - required
     public DateTime? Birth { get; set; }
     public BankDTO Bank { get; set; } = null!;
 }

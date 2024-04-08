@@ -4,6 +4,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Configurations;
 
+
+///<remarks>
+///Configuration for the Saving Account class
+///</remarks>
 public class SavingAccountConfiguration : IEntityTypeConfiguration<SavingAccount>
 {
     public void Configure(EntityTypeBuilder<SavingAccount> entity)

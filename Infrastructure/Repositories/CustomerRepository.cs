@@ -5,7 +5,9 @@ using Core.Models;
 using Core.Requests.BankModel;
 using Core.Requests.CustomerModel;
 using Infrastructure.Contexts;
+using Mapster;
 using Microsoft.EntityFrameworkCore;
+using Infrastructure.Mappings;
 
 namespace Infrastructure.Repositories;
 
@@ -115,43 +117,98 @@ public class CustomerRepository : ICustomerRepository
     }
 
 
-
-    //incompleto, mezclado con bank
-    public async Task<BankDTO> Add(CreateCustomerModel model)
+    /// <summary>
+    /// Adds a customer object using the mapping configuration(search in Infrastructure/Mappings/CustomerMappingConfiguration.cs)
+    /// </summary>
+    public async Task<CustomerDTO> Add(CreateCustomerModel model)
     {
-        var customertocreate = new Customer
-        {
-            Name = model.Name,
-            Lastname = model.Lastname,
-            DocumentNumber = model.DocumentNumber,
-            Address = model.Address,
-            Mail = model.Mail,
-            Phone = model.Phone,
-            CustomerStatus = (CustomerStatus)Enum.Parse(typeof(CustomerStatus), model.CustomerStatus),
-            Birth = model.Birth,
-            BankId = model.Bank.Id,
-            Bank = new Bank { }
-
-        };
+        //searchs for the mapping configuration
+        var customertocreate = model.Adapt<Customer>();
 
         _context.Customers.Add(customertocreate);
 
         await _context.SaveChangesAsync();
 
-        var customerdto = new CustomerDTO
-        {
-            Id = customertocreate.Id,
-            Name = customertocreate.Name,
-            Lastname = customertocreate.Lastname,
-            DocumentNumber = customertocreate.DocumentNumber,
-            Address = customertocreate.Address,
-            Mail = customertocreate.Mail,
-            Phone = customertocreate.Phone,
-            CustomerStatus = model.CustomerStatus,
-            Birth = model.Birth,
-            Bank = model.Bank
-        };
+        //adaptation
 
-        return customerdto;
+        var customerDTO = customertocreate.Adapt<CustomerDTO>();
+
+
+        return customerDTO;
+    }
+
+    /// <summary>
+    /// Deletes the object without hesitation
+    /// </summary>
+    public async Task<bool> Delete(int id)
+    {
+        var customer = await _context.Customers.FindAsync(id);
+
+        if (customer is null) throw new Exception("customer not found");
+
+        _context.Customers.Remove(customer);
+
+        var result = await _context.SaveChangesAsync();
+
+        return result > 0;
+    }
+
+
+    /// <summary>
+    /// returns all the customer objects
+    /// </summary>
+    public async Task<List<CustomerDTO>> GetAll()
+    {
+        var customers = await _context.Customers.ToListAsync();
+        var banks = await _context.Banks.ToListAsync();
+
+
+        //it adapts the mapping for the class customerDTO for a List collection
+        var customersDTO = customers.Adapt<List<CustomerDTO>>();
+
+        return customersDTO;
+    }
+
+    /// <summary>
+    /// returns the customer by Id
+    /// </summary>
+    public async Task<CustomerDTO> GetById(int id)
+    {
+        var customer = await _context.Customers.FindAsync(id);
+        var banks = await _context.Banks.ToListAsync();
+
+
+        if (customer is null) throw new Exception("customer not found");
+
+        //adapting customerDTO
+
+        var customerDTO = customer.Adapt<CustomerDTO>();
+
+        return customerDTO;
+
+    }
+    /// <summary>
+    /// Updates the customer object
+    /// </summary>
+    public async Task<CustomerDTO> Update(UpdateCustomerModel model)
+    {
+        var customer = await _context.Customers.FindAsync(model.Id);
+
+        //this search the bank object to show the name of the bank, depending of the Id
+        var banks = await _context.Banks.ToListAsync();
+
+        if (customer is null) throw new Exception("customer was not found");
+
+        model.Adapt(customer);
+
+        _context.Customers.Update(customer);
+
+        await _context.SaveChangesAsync();
+
+        //adaptation from CustomerMappingConfiguration
+        var customerDTO = customer.Adapt<CustomerDTO>();
+
+        return customerDTO;
+    
     }
 }

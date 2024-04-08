@@ -4,6 +4,7 @@ using Infrastructure.Contexts;
 using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Core.Requests.BankModel;
+using Mapster;
 
 namespace Infrastructure.Repositories;
 
@@ -16,32 +17,39 @@ public class BankRepository : IBankRepository
         _context = context;
     }
 
+    /// <summary>
+    /// it makes a Bank object, with the Bank model, and then with that model, we create a BankDTO object
+    /// </summary>
     public async Task<BankDTO> Add(CreateBankModel model)
     {
-        var banktocreate = new Bank
-        {
-            Name = model.Name,
-            Address = model.Address,
-            Mail = model.Mail,
-            Phone = model.Phone
-        };
+        //var banktocreate = new Bank
+        //{
+        //    Name = model.Name,
+        //    Address = model.Address,
+        //    Mail = model.Mail,
+        //    Phone = model.Phone
+        //};
 
-        _context.Banks.Add(banktocreate);
+
+        //this line is the same like the chunk of above, but adapting it with Mapping configuration
+        var bankToCreate = model.Adapt<Bank>();
+
+        _context.Banks.Add(bankToCreate);
 
         await _context.SaveChangesAsync();
+        
+        //we do the same for the dto
 
-        var bankdto = new BankDTO
-        {
-            Id = banktocreate.Id,
-            Name = banktocreate.Name,
-            Address = banktocreate.Address,
-            Mail = banktocreate.Mail,
-            Phone = banktocreate.Phone
-        };
+        var bankDTO = bankToCreate.Adapt<BankDTO>();
 
-        return bankdto;
+
+        return bankDTO;
     }
 
+    /// <summary>
+    /// Deletes the Bank type searching by id, returns an exception when the bank is not found
+    /// </summary
+    /// <returns>Boolean</returns>
     public async Task<bool> Delete(int id)
     {
         var bank = await _context.Banks.FindAsync(id);
@@ -54,21 +62,18 @@ public class BankRepository : IBankRepository
 
         return result > 0;
     }
-
+    /// <summary>
+    /// returns all the Banks objects from the database
+    /// </summary>
+    /// <returns>All the Banks object</returns>
     public async Task<List<BankDTO>> GetAll()
     {
         var banks = await _context.Banks.ToListAsync();
 
-        var banksdto = banks.Select(bank => new BankDTO
-        {
-            Id = bank.Id,
-            Name = bank.Name,
-            Address = bank.Address,
-            Mail = bank.Mail,
-            Phone = bank.Phone
-        }).ToList();
+        //it adapts the mapping for the class bankDTO for a List collection
+        var banksDTO = banks.Adapt<List<BankDTO>>();
 
-        return banksdto;
+        return banksDTO;
     }
 
     public async Task<BankDTO> GetById(int id)
@@ -77,46 +82,38 @@ public class BankRepository : IBankRepository
 
         if (bank is null) throw new Exception("bank not found");
 
-        var bankdto = new BankDTO
-        {
-            Id = bank.Id,
-            Name = bank.Name,
-            Address = bank.Address,
-            Mail = bank.Mail,
-            Phone = bank.Phone
-        };
+        //adapting BankDTO
 
-        return bankdto;
+        var bankDTO = bank.Adapt<BankDTO>();
+
+        return bankDTO;
     }
 
+    /// <summary>
+    /// It is not allowed to name another Bank with the same name
+    /// </summary>
     public async Task<bool> NameIsAlreadyTaken(string name)
     {
         return await _context.Banks.AnyAsync(bank => bank.Name == name);
     }
 
+    /// <summary>
+    /// Updates the Bank data
+    /// </summary>
     public async Task<BankDTO> Update(UpdateBankModel model)
     {
         var bank = await _context.Banks.FindAsync(model.Id);
 
         if (bank is null) throw new Exception("bank was not found");
 
-        bank.Name = model.Name;
-        bank.Address = model.Address;
-        bank.Mail = model.Mail;
-        bank.Phone = model.Phone;
+        model.Adapt(bank);
 
         _context.Banks.Update(bank);
 
         await _context.SaveChangesAsync();
 
-        var bankdto = new BankDTO
-        {
-            Id = bank.Id,
-            Name = bank.Name,
-            Address = bank.Address,
-            Mail = bank.Mail,
-            Phone = bank.Phone
-        };
+        //adaptation
+        var bankdto = bank.Adapt<BankDTO>();
 
         return bankdto;
     }

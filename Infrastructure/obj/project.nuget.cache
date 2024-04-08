@@ -1,10 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "M7QaSsXPTxlOBSH9JO0MhtVLY2ff32mqb6uPv5stclrOrado8+IC4cwKjRDN1Da5JkRTVlIGr00XzZoG65lfcA==",
+  "dgSpecHash": "BM71VFR4oY1NNnrC//U+/qmG1KB1X+IhKKbTfo46MDgMhKI+YCGxvWHiEUdCUaqdLgUyYHJyqOujEY7EaNjKqw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Bootcamp-4\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
+    "C:\\Users\\Bootcamp-4\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\Bootcamp-4\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\Bootcamp-4\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Bootcamp-4\\.nuget\\packages\\mapster\\7.4.0\\mapster.7.4.0.nupkg.sha512",
+    "C:\\Users\\Bootcamp-4\\.nuget\\packages\\mapster.core\\1.2.1\\mapster.core.1.2.1.nupkg.sha512",
+    "C:\\Users\\Bootcamp-4\\.nuget\\packages\\mapster.dependencyinjection\\1.0.1\\mapster.dependencyinjection.1.0.1.nupkg.sha512",
     "C:\\Users\\Bootcamp-4\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.17\\microsoft.entityframeworkcore.7.0.17.nupkg.sha512",
     "C:\\Users\\Bootcamp-4\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.17\\microsoft.entityframeworkcore.abstractions.7.0.17.nupkg.sha512",
     "C:\\Users\\Bootcamp-4\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.17\\microsoft.entityframeworkcore.analyzers.7.0.17.nupkg.sha512",

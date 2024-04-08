@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Configurations;
 
+///<remarks>
+///Configuration for the Account class
+///</remarks>
 public class AccountConfiguration : IEntityTypeConfiguration<Account>
 {
-        ///<remarks>
-        ///Configuration for the Account class
-        ///</remarks>
     public void Configure(EntityTypeBuilder<Account> entity)
     {
         //key for account

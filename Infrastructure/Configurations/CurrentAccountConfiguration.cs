@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Configurations;
 
+///<remarks>
+///Configuration for the Currency Account class
+///</remarks>
 public class CurrentAccountConfiguration : IEntityTypeConfiguration<CurrentAccount>
 {
     public void Configure(EntityTypeBuilder<CurrentAccount> entity)

@@ -1,5 +1,10 @@
-﻿namespace Core.Models;
+﻿
+namespace Core.Models;
 
+
+
+
+//can find validations on CreateCustomerModel
 public class CustomerDTO
 {
     public int Id { get; set; }

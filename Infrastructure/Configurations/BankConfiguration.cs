@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Configurations;
 
+///<remarks>
+///Configuration for the Bank class
+///</remarks>
 public class BankConfiguration : IEntityTypeConfiguration<Bank>
 {
     public void Configure(EntityTypeBuilder<Bank> entity)

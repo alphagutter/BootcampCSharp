@@ -94,3 +94,9 @@ C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\obj\Debug\ne
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.csproj.Up2Date
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.genruntimeconfig.cache
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\obj\Debug\net7.0\ref\WebApi.dll
+C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\bin\Debug\net7.0\FluentValidation.dll
+C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\bin\Debug\net7.0\FluentValidation.AspNetCore.dll
+C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\bin\Debug\net7.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\bin\Debug\net7.0\Mapster.dll
+C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\bin\Debug\net7.0\Mapster.Core.dll
+C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\bin\Debug\net7.0\Mapster.DependencyInjection.dll

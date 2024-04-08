@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Configurations;
 
+///<remarks>
+///Configuration for the Movement class
+///</remarks>
 public class MovementConfiguration : IEntityTypeConfiguration<Movement>
 {
     public void Configure(EntityTypeBuilder<Movement> entity)

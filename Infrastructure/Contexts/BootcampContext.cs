@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Contexts;
 
+/// <summary>
+/// modelbuilder for all the tables from the database
+/// </summary>
 public partial class BootcampContext : DbContext
 {
     public BootcampContext()
@@ -29,7 +32,7 @@ public partial class BootcampContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        //hecho
+
 
         modelBuilder.ApplyConfiguration(new AccountConfiguration());
 
