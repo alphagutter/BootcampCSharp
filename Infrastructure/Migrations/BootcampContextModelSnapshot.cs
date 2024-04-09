@@ -121,7 +121,7 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id")
                         .HasName("Currency_pkey");
 
-                    b.ToTable("Currency");
+                    b.ToTable("Currencies", (string)null);
                 });
 
             modelBuilder.Entity("Core.Entities.CurrentAccount", b =>

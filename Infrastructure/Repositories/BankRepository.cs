@@ -1,5 +1,6 @@
 ﻿using Core.Interfaces.Repositories;
 using Core.Models;
+using Core.Exceptions;
 using Infrastructure.Contexts;
 using Core.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -22,16 +23,7 @@ public class BankRepository : IBankRepository
     /// </summary>
     public async Task<BankDTO> Add(CreateBankModel model)
     {
-        //var banktocreate = new Bank
-        //{
-        //    Name = model.Name,
-        //    Address = model.Address,
-        //    Mail = model.Mail,
-        //    Phone = model.Phone
-        //};
-
-
-        //this line is the same like the chunk of above, but adapting it with Mapping configuration
+        //we adapt the structure creation with Mapping configuration
         var bankToCreate = model.Adapt<Bank>();
 
         _context.Banks.Add(bankToCreate);
@@ -54,7 +46,7 @@ public class BankRepository : IBankRepository
     {
         var bank = await _context.Banks.FindAsync(id);
 
-        if (bank is null) throw new Exception("bank not found");
+        if (bank is null) throw new NotFoundByIdException("Bank", id);
 
         _context.Banks.Remove(bank);
 
@@ -75,15 +67,20 @@ public class BankRepository : IBankRepository
 
         return banksDTO;
     }
-
+    /// <summary>
+    /// Searches a bank with the provided id
+    /// </summary>
+    /// /// <returns>the bank with the provided Id</returns>
     public async Task<BankDTO> GetById(int id)
     {
         var bank = await _context.Banks.FindAsync(id);
 
-        if (bank is null) throw new Exception("bank not found");
 
-        //adapting BankDTO
+        //throws an exception when the bank does not exist
+        if (bank is null) throw new NotFoundByIdException("Bank", id);
 
+
+        //adapting BankDTO to the mapping configuration
         var bankDTO = bank.Adapt<BankDTO>();
 
         return bankDTO;

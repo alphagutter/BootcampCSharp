@@ -30,6 +30,10 @@ public partial class BootcampContext : DbContext
 
     public virtual DbSet<Movement> Movements { get; set; }
 
+
+    //added recently
+    public virtual DbSet<Currency> Currencies { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 

@@ -1,4 +1,5 @@
-﻿using Core.Interfaces.Repositories;
+﻿using Core.Exceptions;
+using Core.Interfaces.Repositories;
 using Core.Interfaces.Services;
 using Core.Models;
 using Core.Requests.BankModel;
@@ -6,7 +7,7 @@ using Core.Requests.BankModel;
 namespace Infrastructure.Services;
 
 /// <summary>
-/// Constructors from all the services to use in the Banks Table
+/// Constructors from all the services it uses for Banks Table
 /// </summary>
 public class BankService : IBankService
 {
@@ -21,9 +22,10 @@ public class BankService : IBankService
     {
         bool nameIsInUse = await _bankRepository.NameIsAlreadyTaken(model.Name);
 
+        //throws an exception when the name of the bank already exists
         if (nameIsInUse)
         {
-            throw new Exception("Name is already in use");
+            throw new BusinessLogicException("Bank", model.Name);
         }
 
         return await _bankRepository.Add(model);
