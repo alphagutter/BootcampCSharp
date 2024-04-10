@@ -99,6 +99,71 @@ namespace Infrastructure.Migrations
                     b.ToTable("Banks");
                 });
 
+            modelBuilder.Entity("Core.Entities.CreditCard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("AvailableCredit")
+                        .HasPrecision(20, 5)
+                        .HasColumnType("numeric(20,5)");
+
+                    b.Property<string>("CardNumber")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<int>("CreditCardStatus")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("CreditLimit")
+                        .HasPrecision(20, 5)
+                        .HasColumnType("numeric(20,5)");
+
+                    b.Property<int>("CurrencyId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("CurrentDebt")
+                        .HasPrecision(20, 5)
+                        .HasColumnType("numeric(20,5)");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Cvv")
+                        .HasMaxLength(10)
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Designation")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<DateTime>("ExpirationDate")
+                        .HasMaxLength(100)
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<decimal>("InterestRate")
+                        .HasPrecision(20, 5)
+                        .HasColumnType("numeric(20,5)");
+
+                    b.Property<DateTime>("IssueDate")
+                        .HasMaxLength(100)
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id")
+                        .HasName("CreditCard_pkey");
+
+                    b.HasIndex("CurrencyId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("CreditCards");
+                });
+
             modelBuilder.Entity("Core.Entities.Currency", b =>
                 {
                     b.Property<int>("Id")
@@ -282,6 +347,25 @@ namespace Infrastructure.Migrations
                     b.Navigation("Customer");
                 });
 
+            modelBuilder.Entity("Core.Entities.CreditCard", b =>
+                {
+                    b.HasOne("Core.Entities.Currency", "Currency")
+                        .WithMany("CreditCards")
+                        .HasForeignKey("CurrencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Core.Entities.Customer", "Customer")
+                        .WithMany("CreditCards")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Currency");
+
+                    b.Navigation("Customer");
+                });
+
             modelBuilder.Entity("Core.Entities.CurrentAccount", b =>
                 {
                     b.HasOne("Core.Entities.Account", "Account")
@@ -343,11 +427,15 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Core.Entities.Currency", b =>
                 {
                     b.Navigation("Accounts");
+
+                    b.Navigation("CreditCards");
                 });
 
             modelBuilder.Entity("Core.Entities.Customer", b =>
                 {
                     b.Navigation("Accounts");
+
+                    b.Navigation("CreditCards");
                 });
 #pragma warning restore 612, 618
         }

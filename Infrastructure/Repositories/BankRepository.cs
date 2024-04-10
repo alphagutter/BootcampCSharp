@@ -101,7 +101,7 @@ public class BankRepository : IBankRepository
     {
         var bank = await _context.Banks.FindAsync(model.Id);
 
-        if (bank is null) throw new Exception("bank was not found");
+        if (bank is null) throw new NotFoundByIdException("Bank", model.Id);
 
         model.Adapt(bank);
 

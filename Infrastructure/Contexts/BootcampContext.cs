@@ -34,6 +34,8 @@ public partial class BootcampContext : DbContext
     //added recently
     public virtual DbSet<Currency> Currencies { get; set; }
 
+    public virtual DbSet<CreditCard> CreditCards { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 
@@ -54,6 +56,8 @@ public partial class BootcampContext : DbContext
         modelBuilder.ApplyConfiguration(new CurrencyConfiguration());
 
         modelBuilder.ApplyConfiguration(new MovementConfiguration());
+        //recently added
+        modelBuilder.ApplyConfiguration(new CreditCardConfiguration());
 
 
 

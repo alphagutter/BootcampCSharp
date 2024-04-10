@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|c:\\users\\bootcamp-4\\source\\repos\\bootcampapi2\\bootcampcsharp\\infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|c:\\users\\bootcamp-4\\source\\repos\\bootcampapi2\\bootcampcsharp\\infrastructure\\services\\creditcardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\services\\creditcardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|c:\\users\\bootcamp-4\\source\\repos\\bootcampapi2\\bootcampcsharp\\infrastructure\\services\\currencyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\services\\currencyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|c:\\users\\bootcamp-4\\source\\repos\\bootcampapi2\\bootcampcsharp\\infrastructure\\repositories\\creditcardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\creditcardrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +27,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\DependencyInjection.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\DependencyInjection.cs",
-              "ToolTip": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\DependencyInjection.cs",
-              "RelativeToolTip": "Infrastructure\\DependencyInjection.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Title": "CreditCardService.cs",
+              "DocumentMoniker": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Services\\CreditCardService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Services\\CreditCardService.cs",
+              "ToolTip": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Services\\CreditCardService.cs",
+              "RelativeToolTip": "Infrastructure\\Services\\CreditCardService.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAAAB8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-09T18:18:04.068Z",
+              "WhenOpened": "2024-04-10T18:48:45.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CurrencyService.cs",
+              "DocumentMoniker": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Services\\CurrencyService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Services\\CurrencyService.cs",
+              "ToolTip": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Services\\CurrencyService.cs",
+              "RelativeToolTip": "Infrastructure\\Services\\CurrencyService.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAQwCYAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-10T18:47:10.306Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CreditCardRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Repositories\\CreditCardRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\CreditCardRepository.cs",
+              "ToolTip": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Repositories\\CreditCardRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\CreditCardRepository.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAA6wE0AAABIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-10T18:29:06.127Z",
               "EditorCaption": ""
             }
           ]

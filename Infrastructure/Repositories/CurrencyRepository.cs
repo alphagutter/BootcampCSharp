@@ -9,6 +9,7 @@ using Infrastructure.Contexts;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Mappings;
+using Core.Exceptions;
 
 namespace Infrastructure.Repositories;
 
@@ -67,7 +68,7 @@ public class CurrencyRepository : ICurrencyRepository
     {
         var currency = await _context.Currencies.FindAsync(id);
 
-        if (currency is null) throw new Exception(" -- not found");
+        if (currency is null) throw new NotFoundByIdException("Currency", id);
 
         _context.Currencies.Remove(currency);
 
@@ -98,7 +99,7 @@ public class CurrencyRepository : ICurrencyRepository
     {
         var currency = await _context.Currencies.FindAsync(id);
 
-        if (currency is null) throw new Exception("-- not found");
+        if (currency is null) throw new NotFoundByIdException("Currency", id);
 
         //adapting customerDTO
 
@@ -115,7 +116,7 @@ public class CurrencyRepository : ICurrencyRepository
         var currency = await _context.Currencies.FindAsync(model.Id);
 
 
-        if (currency is null) throw new Exception("-- was not found");
+        if (currency is null) throw new NotFoundByIdException("Currency", model.Id);
 
         model.Adapt(currency);
 
