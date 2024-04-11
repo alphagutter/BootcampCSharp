@@ -4,5 +4,5 @@
 //interface to create the jwt provider
 public interface IJwtProvider
 {
-    string Generate();
+    string GenerateAllRoles(IEnumerable<string> roles);
 }

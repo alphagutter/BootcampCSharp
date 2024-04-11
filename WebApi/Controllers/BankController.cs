@@ -1,6 +1,7 @@
 ﻿using Core.Interfaces.Repositories;
 using Core.Interfaces.Services;
 using Core.Requests.BankModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
@@ -67,6 +68,7 @@ public class BankController : BaseApiController
     /// Task to return all the existing Banks
     /// </summary>
     [HttpGet("all")]
+    [Authorize (Roles ="Security")]
     public async Task<IActionResult> GetAll()
     {
         var banks = await _service.GetAll();

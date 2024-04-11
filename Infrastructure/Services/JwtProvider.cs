@@ -17,20 +17,20 @@ public class JwtProvider : IJwtProvider
         _jwtSettings = jwtSettings.Value;
     }
 
-
-    //we generate the roles to be verified in the token check
-    public string Generate()
+    public string GenerateAllRoles(IEnumerable<string> roles)
     {
-        var userRoles = new List<string> { "Admin"/*, "Security"*/ };
+        var claims = new List<Claim>();
 
-        var claims = new Claim[]
+        foreach (var role in roles)
         {
-            new Claim(JwtRegisteredClaimNames.Sub, "1"),
-            new Claim(JwtRegisteredClaimNames.Email, "proof@proof.com"),
-            new Claim(ClaimTypes.Role, string.Join(",", userRoles))
-        };
+            claims.Add(new Claim(ClaimTypes.Role, role));
+        }
 
-        //it creates a credential, it can seem as an extra encryptation
+        // add another claims outside
+        claims.Add(new Claim(JwtRegisteredClaimNames.Sub, "1"));
+        claims.Add(new Claim(JwtRegisteredClaimNames.Email, "proof@proof.com"));
+
+        //
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
         var signInCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
@@ -47,4 +47,6 @@ public class JwtProvider : IJwtProvider
 
         return tokenValue;
     }
+
+
 }

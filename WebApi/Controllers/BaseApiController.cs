@@ -5,7 +5,7 @@ namespace WebApi.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 //we add an authorization for the access to the Api funcions, can be abled after the token verification
-[Authorize]
+//[Authorize(Roles ="Admin,Security,Guest")]
 public class BaseApiController : ControllerBase
 {
 }
