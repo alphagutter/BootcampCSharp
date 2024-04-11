@@ -9,7 +9,7 @@ namespace Infrastructure.Mappings;
 /// <summary>
 /// Configuration for CreditCard Creation(template to create CreditCard and CreditCardDTO)
 /// </summary>
-public class CreditCardMappingConfiguration
+public class CreditCardMappingConfiguration : IRegister
 {
     public void Register(TypeAdapterConfig config)
     {

@@ -1,4 +1,5 @@
 using Infrastructure;
+using WebApi;
 using WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,10 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//added during the token verification creation
+builder.Services.AddWebApi(builder.Configuration);
+
 
 var app = builder.Build();
 

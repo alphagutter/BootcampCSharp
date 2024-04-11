@@ -137,6 +137,10 @@
               "target": "Package",
               "version": "[7.0.17, )"
             },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
             "Npgsql": {
               "target": "Package",
               "version": "[7.0.6, )"
@@ -144,6 +148,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[7.0.11, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.5.1, )"
             }
           },
           "imports": [

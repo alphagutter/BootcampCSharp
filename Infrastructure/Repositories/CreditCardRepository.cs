@@ -104,9 +104,12 @@ public class CreditCardRepository : ICreditCardRepository
     public async Task<CreditCardDTO> Update(UpdateCreditCardModel model)
     {
         var creditcard = await _context.CreditCards.FindAsync(model.Id);
+        var newCurrency = await _context.Currencies.FindAsync(creditcard.CurrencyId);
+        var newCustomer = await _context.Customers.FindAsync(creditcard.CustomerId);
 
-        if (creditcard.Currency == null) throw new NotFoundByIdException("Currency", creditcard.CurrencyId);
-        if (creditcard.Customer == null) throw new NotFoundByIdException("Customer", creditcard.CustomerId);
+        //if currency or customer doesn't exists, throws an exception and doesn't update the credit card
+        if (newCurrency is null ) throw new NotFoundByIdException("Currency", model.Id);
+        if (newCustomer is null ) throw new NotFoundByIdException("Customer", model.Id);
 
         if (creditcard is null) throw new NotFoundByIdException("Credit Card", model.Id);
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "BM71VFR4oY1NNnrC//U+/qmG1KB1X+IhKKbTfo46MDgMhKI+YCGxvWHiEUdCUaqdLgUyYHJyqOujEY7EaNjKqw==",
+  "dgSpecHash": "Fb2HlRxDmYJLgiGeQGEHlwFFSdX248VMqzqKpluVh7rd8FIYCVzN+HD6O/FyZHK9LAJSxS0i6WLxGtmA/X4lDg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -24,12 +24,17 @@
     "C:\\Users\\Bootcamp-4\\.nuget\\packages\\microsoft.extensions.dependencymodel\\7.0.0\\microsoft.extensions.dependencymodel.7.0.0.nupkg.sha512",
     "C:\\Users\\Bootcamp-4\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
     "C:\\Users\\Bootcamp-4\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
-    "C:\\Users\\Bootcamp-4\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
+    "C:\\Users\\Bootcamp-4\\.nuget\\packages\\microsoft.extensions.options\\7.0.1\\microsoft.extensions.options.7.0.1.nupkg.sha512",
     "C:\\Users\\Bootcamp-4\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\Bootcamp-4\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.5.1\\microsoft.identitymodel.abstractions.7.5.1.nupkg.sha512",
+    "C:\\Users\\Bootcamp-4\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.5.1\\microsoft.identitymodel.jsonwebtokens.7.5.1.nupkg.sha512",
+    "C:\\Users\\Bootcamp-4\\.nuget\\packages\\microsoft.identitymodel.logging\\7.5.1\\microsoft.identitymodel.logging.7.5.1.nupkg.sha512",
+    "C:\\Users\\Bootcamp-4\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.5.1\\microsoft.identitymodel.tokens.7.5.1.nupkg.sha512",
     "C:\\Users\\Bootcamp-4\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\Bootcamp-4\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
     "C:\\Users\\Bootcamp-4\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
     "C:\\Users\\Bootcamp-4\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
+    "C:\\Users\\Bootcamp-4\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.5.1\\system.identitymodel.tokens.jwt.7.5.1.nupkg.sha512",
     "C:\\Users\\Bootcamp-4\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\Bootcamp-4\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"
   ],

@@ -67,6 +67,9 @@ public static class DependencyInjection
         services.AddScoped<ICustomerService, CustomerService>();
         services.AddScoped<ICurrencyService, CurrencyService>();
         services.AddScoped<ICreditCardServices, CreditCardService>();
+        
+        //token service with Jwt
+        services.AddScoped<IJwtProvider, JwtProvider>();
 
 
         return services;
