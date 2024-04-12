@@ -44,6 +44,9 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("IsDeleted")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Number")
                         .IsRequired()
                         .HasMaxLength(100)

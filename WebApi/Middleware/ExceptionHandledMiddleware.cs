@@ -40,7 +40,7 @@ public class ExceptionHandleMiddleware
         context.Response.ContentType = _jsonContentType;
         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-        await Console.Out.WriteLineAsync($"Ha ocurrido un error inesperado. Detalles: {ex.StackTrace}");
+        await Console.Out.WriteLineAsync($"An unexpected error ocurred. Details: {ex.StackTrace}");
 
         var error = new ErrorModel
         {

@@ -50,10 +50,10 @@ public static class DependencyInjection
         services.AddScoped<IBankRepository, BankRepository>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
         services.AddScoped<ICurrencyRepository, CurrencyRepository>();
-
-        //added recently
         services.AddScoped<ICreditCardRepository, CreditCardRepository>();
 
+        //added recently
+        services.AddScoped<IAccountRepository, AccountRepository>();
 
         return services;
     }
@@ -67,9 +67,11 @@ public static class DependencyInjection
         services.AddScoped<ICustomerService, CustomerService>();
         services.AddScoped<ICurrencyService, CurrencyService>();
         services.AddScoped<ICreditCardServices, CreditCardService>();
+        services.AddScoped<IAccountService, AccountService>();
         
         //token service with Jwt
         services.AddScoped<IJwtProvider, JwtProvider>();
+
 
 
         return services;

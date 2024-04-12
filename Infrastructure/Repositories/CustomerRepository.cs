@@ -2,13 +2,10 @@
 using Core.Entities;
 using Core.Interfaces.Repositories;
 using Core.Models;
-using Core.Requests.BankModel;
 using Core.Requests.CustomerModel;
 using Infrastructure.Contexts;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
-using Infrastructure.Mappings;
-
 namespace Infrastructure.Repositories;
 
 public class CustomerRepository : ICustomerRepository
@@ -94,26 +91,10 @@ public class CustomerRepository : ICustomerRepository
 
         var result = await query.ToListAsync();
 
-        return result.Select(x => new CustomerDTO
-        {
-            Id = x.Id,
-            Name = x.Name,
-            Lastname = x.Lastname,
-            DocumentNumber = x.DocumentNumber,
-            Address = x.Address,
-            Mail = x.Mail,
-            Phone = x.Phone,
-            CustomerStatus = nameof(x.CustomerStatus),
-            Birth = x.Birth,
-            Bank = new BankDTO
-            {
-                Id = x.Bank.Id,
-                Name = x.Bank.Name,
-                Phone = x.Bank.Phone,
-                Mail = x.Bank.Mail,
-                Address = x.Bank.Address
-            }
-        }).ToList();
+
+        //verify later if it works
+        return result.Select(x => x.Adapt<CustomerDTO>()).ToList();
+
     }
 
 

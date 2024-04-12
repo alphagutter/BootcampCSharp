@@ -51,7 +51,6 @@ C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\obj\Debug\ne
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.AssemblyInfoInputs.cache
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.AssemblyInfo.cs
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.csproj.CoreCompileInputs.cache
-C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.sourcelink.json
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.dll
@@ -109,3 +108,4 @@ C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\bin\Debug\ne
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.MvcApplicationPartsAssemblyInfo.cs
