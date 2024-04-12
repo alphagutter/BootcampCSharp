@@ -1,5 +1,6 @@
 ﻿
 using Core.Models;
+using Core.Models.AccountTypes;
 using Core.Requests.AccountModel;
 
 namespace Core.Interfaces.Repositories;

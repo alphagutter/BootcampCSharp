@@ -2,6 +2,8 @@
 using Core.Requests.AccountModel;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
 
@@ -31,6 +33,7 @@ public class AccountController : BaseApiController
     /// Task to create a new Account
     /// </summary>
     [HttpPost]
+    [AllowAnonymous]
     public async Task<IActionResult> Create([FromBody] CreateAccountModel request)
     {
         return Ok(await _accountService.Add(request));

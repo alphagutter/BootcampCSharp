@@ -3,7 +3,7 @@ using Core.Constants;
 using Core.Entities;
 using Core.Models;
 using Core.Requests.AccountModel;
-using Core.Requests.AccountModel.AccountTypeModel;
+using Core.Requests.AccountModel.AccountTypesModel;
 using Mapster;
 
 namespace Infrastructure.Mappings;
@@ -32,22 +32,12 @@ public class AccountMappingConfiguration
             .Map(dest => dest.Number, src => src.Number)
             .Map(dest => dest.Type, src => src.Type)
             .Map(dest => dest.Balance, src => src.Balance)
-            .Map(dest => dest.Currency, src => src.CurrencyId)
-            .Map(dest => dest.Customer, src => src.CustomerId)
-            .Map(dest => dest.Status, src => src.Status);
+            .Map(dest => dest.Currency, src => src.Currency)
+            .Map(dest => dest.Customer, src => src.Customer)
+            .Map(dest => dest.Status, src => src.Status)
 
-    }
+            .Map(dest => dest.CurrentAccountDTO, src => src.CurrentAccount)
+            .Map(dest => dest.SavingAccountDTO, src => src.SavingAccount);
 
-    //depending of which account we choose, it will call one of the DTO's and create the accouont type according to
-    private object ChooseAccountType(string typeChoosed)
-    {
-        switch (typeChoosed)
-        {
-            case "Current":
-                return CurrentCreation();
-            case "SavingAccount":
-                return SavingAccountCreation();
-            default:
-                throw new ArgumentException("Invalid account type");
         }
-    }
+    }    

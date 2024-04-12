@@ -22,18 +22,40 @@ public class AccountRepository : IAccountRepository
 
     public async Task<AccountDTO> Add(CreateAccountModel model)
     {
-        // Search for the mapping configuration
+        // Adapt the CreateAccountModel to Account
         var accountToCreate = model.Adapt<Account>();
 
+        // Verify the account type
+        var accountType = Enum.Parse<AccountType>(model.Type);
+
+        // Create an instance of the corresponding account type
+
+        // Add the account to the Accounts DbSet
         _context.Accounts.Add(accountToCreate);
 
+        // Save changes to the database
         await _context.SaveChangesAsync();
 
-        // Adaptation
+        // Adapt the created account to AccountDTO
+        switch (accountType)
+        {
+            case AccountType.Current:
+                var currentAccount = model.Adapt<CurrentAccount>();
+                _context.CurrentAccounts.Add(currentAccount);
+                break;
+            case AccountType.Saving:
+                var savingAccount = model.Adapt<SavingAccount>();
+                _context.SavingAccounts.Add(savingAccount);
+                break;
+            default:
+                throw new ArgumentException("Invalid account type");
+        }
         var accountDTO = accountToCreate.Adapt<AccountDTO>();
 
         return accountDTO;
     }
+
+
 
     /// <summary>
     /// Deletes the object without hesitation

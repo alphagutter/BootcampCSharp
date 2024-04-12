@@ -1,12 +1,54 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|c:\\users\\bootcamp-4\\source\\repos\\bootcampapi2\\bootcampcsharp\\infrastructure\\repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|c:\\users\\bootcamp-4\\source\\repos\\bootcampapi2\\bootcampcsharp\\infrastructure\\mappings\\accountmappingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\mappings\\accountmappingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccountMappingConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Mappings\\AccountMappingConfiguration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Mappings\\AccountMappingConfiguration.cs",
+              "ToolTip": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Mappings\\AccountMappingConfiguration.cs",
+              "RelativeToolTip": "Infrastructure\\Mappings\\AccountMappingConfiguration.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAmwCUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T18:10:45.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Repositories\\AccountRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\AccountRepository.cs",
+              "ToolTip": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Repositories\\AccountRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\AccountRepository.cs",
+              "ViewState": "AQIAAI0AAAAAAAAAAAAmwK8AAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T17:40:54.119Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

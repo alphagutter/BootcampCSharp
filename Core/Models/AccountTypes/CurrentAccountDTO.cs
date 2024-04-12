@@ -1,6 +1,6 @@
 ﻿using Core.Entities;
 
-namespace Models.AccountTypes;
+namespace Core.Models.AccountTypes;
 
 public class CurrentAccountDTO
 {
