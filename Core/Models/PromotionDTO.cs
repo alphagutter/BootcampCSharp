@@ -1,4 +1,6 @@
-﻿namespace Core.Models;
+﻿using Core.Entities;
+
+namespace Core.Models;
 
 public class PromotionDTO
 {
@@ -7,4 +9,6 @@ public class PromotionDTO
     public DateTime? Start { get; set; }
     public DateTime? End { get; set; }
     public int Discount { get; set; }
+
+    public List<EnterpriseDTO> Enterprises { get; set; } = new List<EnterpriseDTO>();  
 }

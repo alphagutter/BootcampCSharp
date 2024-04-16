@@ -5,5 +5,5 @@
 //not complete yet
 public class FilterPromotionModel
 {
-
+    public int? ById;
 }

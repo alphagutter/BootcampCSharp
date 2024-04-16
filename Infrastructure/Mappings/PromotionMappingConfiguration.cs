@@ -23,7 +23,13 @@ public class PromotionMappingConfiguration : IRegister
             .Map(dest => dest.Name, src => src.Name)
             .Map(dest => dest.Start, src => src.Start)
             .Map(dest => dest.End, src => src.End)
-            .Map(dest => dest.Discount, src => src.Discount);
+            .Map(dest => dest.Discount, src => src.Discount)
+            .AfterMapping((src, dest) =>
+            {
+                dest.Enterprises = src.PromotionsEnterprises
+                .Select(pe => pe.Enterprise.Adapt<EnterpriseDTO>())
+                .ToList();
+            });
     }
 
 }

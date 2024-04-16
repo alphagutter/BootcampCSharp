@@ -15,7 +15,7 @@ public class PromotionEnterpriseConfiguration : IEntityTypeConfiguration<Promoti
             .IsUnique();
 
 
-        //this is if i want to create 
+        //this is if i wanted to create a composite primary key
         //entity.HasKey(e => new { e.PromotionId, e.BusinessId });
 
         entity
