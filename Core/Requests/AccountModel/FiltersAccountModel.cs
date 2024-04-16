@@ -1,4 +1,6 @@
 ﻿
+using Core.Constants;
+
 namespace Core.Requests.AccountModel;
 
 public class FiltersAccountModel
@@ -7,6 +9,6 @@ public class FiltersAccountModel
     public string? ByNumber { get; set; }
 
     //it filters all the account acording to the type of account
-    public string? ByType { get; set; }
-    public string? ByCurrency { get; set; }
+    public AccountType? ByType { get; set; }
+    public int? ByCurrency { get; set; }
 }

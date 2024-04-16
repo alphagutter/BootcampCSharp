@@ -10,7 +10,7 @@ public interface IAccountRepository
     Task<List<AccountDTO>> GetFiltered(FiltersAccountModel filter);
 
 
-    Task<AccountDTO> Add(CreateAccountModel model);
+    Task<AccountDTO> Add(CreateAccountRequest model);
     Task<AccountDTO> GetById(int id);
     Task<AccountDTO> Update(UpdateAccountModel model);
     Task<bool> Delete(int id);

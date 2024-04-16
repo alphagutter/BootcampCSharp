@@ -13,7 +13,7 @@ public class SavingAccountConfiguration
 {
     public void Register(TypeAdapterConfig config)
     {
-        config.NewConfig<CreateSavingAccountModel, SavingAccount>()
+        config.NewConfig<CreateSavingAccount, SavingAccount>()
             .Map(dest => dest.SavingType, src => Enum.Parse<SavingType>(src.SavingType))
             .Map(dest => dest.HolderName, src => src.HolderName)
             .Map(dest => dest.AccountId, src => src.AccountId);

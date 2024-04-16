@@ -22,7 +22,7 @@ namespace Infrastructure.Services
             return await _repository.GetFiltered(filter);
         }
 
-        public async Task<AccountDTO> Add(CreateAccountModel model)
+        public async Task<AccountDTO> Add(CreateAccountRequest model)
         {
             return await _repository.Add(model);
         }

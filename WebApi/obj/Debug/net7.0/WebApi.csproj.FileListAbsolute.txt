@@ -109,3 +109,14 @@ C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\bin\Debug\ne
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.csproj.AssemblyReference.cache
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.AssemblyInfoInputs.cache
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.AssemblyInfo.cs
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.csproj.CoreCompileInputs.cache
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.sourcelink.json
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.dll
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\WebApi\obj\Debug\net7.0\refint\WebApi.dll
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\WebApi\obj\Debug\net7.0\WebApi.pdb

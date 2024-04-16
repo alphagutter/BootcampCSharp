@@ -34,3 +34,12 @@ C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\Infrastructure\bin\
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\Infrastructure\obj\Debug\net7.0\Infrastr.15EFFBFE.Up2Date
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\Infrastructure\obj\Debug\net7.0\Infrastructure.genruntimeconfig.cache
 C:\Users\Bootcamp-4\source\repos\BootcampApi2\BootcampCSharp\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\Infrastructure\obj\Debug\net7.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\Infrastructure\obj\Debug\net7.0\Infrastructure.AssemblyInfo.cs
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\Infrastructure\obj\Debug\net7.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\Infrastructure\obj\Debug\net7.0\Infrastructure.sourcelink.json
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\Infrastructure\obj\Debug\net7.0\Infrastructure.dll
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\Infrastructure\obj\Debug\net7.0\refint\Infrastructure.dll
+C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb

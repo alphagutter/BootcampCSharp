@@ -5,6 +5,7 @@ using Core.Models;
 using Core.Models.AccountTypes;
 using Core.Requests.AccountModel;
 using Core.Requests.AccountModel.AccountTypesModel;
+using Infrastructure.Mappings;
 using Mapster;
 
 namespace Infrastructure.Mappings;
@@ -18,7 +19,7 @@ public class CurrentAccountMappingConfiguration
     {
 
 
-        config.NewConfig<CreateCurrentAccountModel, CurrentAccount>()
+        config.NewConfig<CreateCurrentAccount, CurrentAccount>()
             .Map(dest => dest.OperationalLimit, src => src.OperationalLimit)
             .Map(dest => dest.MonthAverage, src => src.MonthAverage)
             .Map(dest => dest.Interest, src => src.Interest)
