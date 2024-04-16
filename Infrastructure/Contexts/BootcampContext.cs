@@ -36,7 +36,9 @@ public partial class BootcampContext : DbContext
 
     //recently added
     public virtual DbSet<Promotion> Promotions { get; set; }
-    public virtual DbSet<Business> Businesses { get; set; }
+    public virtual DbSet<Enterprise> Enterprises { get; set; }
+    public virtual DbSet<PromotionEnterprise> PromotionEnterprise { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -65,7 +67,9 @@ public partial class BootcampContext : DbContext
         //recently added
         modelBuilder.ApplyConfiguration(new PromotionConfiguration());
         
-        modelBuilder.ApplyConfiguration(new BusinessConfiguration());
+        modelBuilder.ApplyConfiguration(new EnterpriseConfiguration());
+
+        modelBuilder.ApplyConfiguration(new PromotionEnterpriseConfiguration());
 
 
 

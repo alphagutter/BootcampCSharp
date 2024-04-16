@@ -33,7 +33,6 @@ public class AccountController : BaseApiController
     /// Task to create a new Account
     /// </summary>
     [HttpPost]
-    [AllowAnonymous]
     public async Task<IActionResult> Create([FromBody] CreateAccountRequest request)
     {
         return Ok(await _accountService.Add(request));

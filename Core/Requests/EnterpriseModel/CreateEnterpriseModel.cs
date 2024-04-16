@@ -2,8 +2,8 @@
 
 using Core.Entities;
 
-namespace Core.Requests.BusinessModel;
-public class CreateBusinessModel
+namespace Core.Requests.EnterpriseModel;
+public class CreateEnterpriseModel
 {
     public string? Name { get; set; }
     public string? Address { get; set; }

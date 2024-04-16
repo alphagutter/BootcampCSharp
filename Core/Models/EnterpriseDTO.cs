@@ -1,8 +1,7 @@
-﻿using Core.Entities;
+﻿
+namespace Core.Models;
 
-namespace Core.Requests.BusinessModel;
-
-public class UpdateBusinessModel
+public class EnterpriseDTO
 {
     public int Id { get; set; }
     public string? Name { get; set; }

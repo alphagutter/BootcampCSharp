@@ -272,6 +272,40 @@ namespace Infrastructure.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("Core.Entities.Enterprise", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Id")
+                        .HasName("Enterprise_pkey");
+
+                    b.ToTable("Enterprises");
+                });
+
             modelBuilder.Entity("Core.Entities.Movement", b =>
                 {
                     b.Property<int>("Id")
@@ -303,6 +337,57 @@ namespace Infrastructure.Migrations
                     b.HasIndex("AccountId");
 
                     b.ToTable("Movements");
+                });
+
+            modelBuilder.Entity("Core.Entities.Promotion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Discount")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("End")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Start")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id")
+                        .HasName("Promotion_pkey");
+
+                    b.ToTable("Promotions");
+                });
+
+            modelBuilder.Entity("Core.Entities.PromotionEnterprise", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("EnterpriseId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PromotionId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EnterpriseId");
+
+                    b.HasIndex("PromotionId", "EnterpriseId")
+                        .IsUnique();
+
+                    b.ToTable("PromotionEnterprise");
                 });
 
             modelBuilder.Entity("Core.Entities.SavingAccount", b =>
@@ -404,6 +489,25 @@ namespace Infrastructure.Migrations
                     b.Navigation("Account");
                 });
 
+            modelBuilder.Entity("Core.Entities.PromotionEnterprise", b =>
+                {
+                    b.HasOne("Core.Entities.Enterprise", "Enterprise")
+                        .WithMany("PromotionsEnterprises")
+                        .HasForeignKey("EnterpriseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Core.Entities.Promotion", "Promotion")
+                        .WithMany("PromotionsEnterprises")
+                        .HasForeignKey("PromotionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Enterprise");
+
+                    b.Navigation("Promotion");
+                });
+
             modelBuilder.Entity("Core.Entities.SavingAccount", b =>
                 {
                     b.HasOne("Core.Entities.Account", "Account")
@@ -441,6 +545,16 @@ namespace Infrastructure.Migrations
                     b.Navigation("Accounts");
 
                     b.Navigation("CreditCards");
+                });
+
+            modelBuilder.Entity("Core.Entities.Enterprise", b =>
+                {
+                    b.Navigation("PromotionsEnterprises");
+                });
+
+            modelBuilder.Entity("Core.Entities.Promotion", b =>
+                {
+                    b.Navigation("PromotionsEnterprises");
                 });
 #pragma warning restore 612, 618
         }

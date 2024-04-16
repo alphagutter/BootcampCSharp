@@ -19,16 +19,13 @@ public class PromotionRepository : IPromotionRepository
 
     public async Task<PromotionDTO> Add(CreatePromotionModel model)
     {
-        var promotion = model.Adapt<Promotion>();
-        _context.Promotions.Add(promotion);
+        var promotiontocreate = model.Adapt<Promotion>();
+        _context.Promotions.Add(promotiontocreate);
 
         await _context.SaveChangesAsync();
 
-        var createdPromotion = await _context.Promotions
-            .Include(a => a.Business)
-            .FirstOrDefaultAsync(a => a.Id == promotion.Id);
-
-        return createdPromotion.Adapt<PromotionDTO>();
+        var promotionDTO = promotiontocreate.Adapt<PromotionDTO>();
+        return promotionDTO;
     }
 
     public async Task<bool> Delete(int id)
@@ -43,7 +40,7 @@ public class PromotionRepository : IPromotionRepository
     public async Task<PromotionDTO> GetById(int id)
     {
         var query = _context.Promotions
-           .Include(a => a.Business)
+           .Include(a => a.PromotionsEnterprises)
            .AsQueryable();
 
         var promotion = await _context.Promotions.FindAsync(id);
@@ -60,16 +57,18 @@ public class PromotionRepository : IPromotionRepository
 
     public async Task<PromotionDTO> Update(UpdatePromotionModel model)
     {
-        var promotion = model.Adapt<Promotion>();
+        var promotion = await _context.Promotions.FindAsync(model.Id);
+
+        if (promotion is null) throw new Exception("Promotion was not found");
+
+        model.Adapt(promotion);
+
         _context.Promotions.Update(promotion);
 
         await _context.SaveChangesAsync();
 
-        var updatedPromotion = await _context.Promotions
-            .Include(a => a.Business)
-            .FirstOrDefaultAsync(a => a.Id == promotion.Id);
-
-        return updatedPromotion.Adapt<PromotionDTO>();
+        var promotionDTO = promotion.Adapt<PromotionDTO>();
+        return promotionDTO;
     }
 
     //not implemented yet

@@ -8,22 +8,30 @@ public class PromotionConfiguration : IEntityTypeConfiguration<Promotion>
 {
     public void Configure(EntityTypeBuilder<Promotion> entity)
     {
+        //primary key for 'Promotion' table
+
         entity
             .HasKey(e => e.Id)
             .HasName("Promotion_pkey");
-        entity
-            .Property(e => e.Name)
-            .HasMaxLength(100)
-            .IsRequired();
-        entity
-            .Property(e => e.DurationTime);
-        entity
-            .Property(e => e.PercentageOff)
-            .HasPrecision(20, 5);
-        entity
-            .HasOne(d => d.Business)
-            .WithMany(p => p.Promotions)
-            .HasForeignKey(d => d.BusinessId);
 
+        entity
+            .Property(p => p.Start)
+            .IsRequired();
+
+        entity
+            .Property(p => p.End)
+            .IsRequired();
+
+        entity
+            .Property(p => p.Discount)
+            .IsRequired();
+
+
+        //foreign key relation between Promotion and PromotionsEnterprises (1:N)
+        entity
+            .HasMany(p => p.PromotionsEnterprises)
+            .WithOne(pe => pe.Promotion)
+            .HasForeignKey(pe => pe.PromotionId);
     }
+
 }
