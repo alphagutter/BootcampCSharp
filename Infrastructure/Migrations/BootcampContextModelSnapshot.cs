@@ -339,6 +339,75 @@ namespace Infrastructure.Migrations
                     b.ToTable("Movements");
                 });
 
+            modelBuilder.Entity("Core.Entities.Petition", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("numeric");
+
+                    b.Property<DateTime?>("ApprovalDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("CurrencyId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("RequestDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Term")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id")
+                        .HasName("Petition_pkey");
+
+                    b.HasIndex("CurrencyId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Petitions");
+                });
+
+            modelBuilder.Entity("Core.Entities.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CustomerId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Product");
+                });
+
             modelBuilder.Entity("Core.Entities.Promotion", b =>
                 {
                     b.Property<int>("Id")
@@ -489,6 +558,36 @@ namespace Infrastructure.Migrations
                     b.Navigation("Account");
                 });
 
+            modelBuilder.Entity("Core.Entities.Petition", b =>
+                {
+                    b.HasOne("Core.Entities.Currency", "Currency")
+                        .WithMany("Petitions")
+                        .HasForeignKey("CurrencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Core.Entities.Customer", "Customer")
+                        .WithMany("Petitions")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Core.Entities.Product", null)
+                        .WithMany("Petitions")
+                        .HasForeignKey("ProductId");
+
+                    b.Navigation("Currency");
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("Core.Entities.Product", b =>
+                {
+                    b.HasOne("Core.Entities.Customer", null)
+                        .WithMany("Products")
+                        .HasForeignKey("CustomerId");
+                });
+
             modelBuilder.Entity("Core.Entities.PromotionEnterprise", b =>
                 {
                     b.HasOne("Core.Entities.Enterprise", "Enterprise")
@@ -538,6 +637,8 @@ namespace Infrastructure.Migrations
                     b.Navigation("Accounts");
 
                     b.Navigation("CreditCards");
+
+                    b.Navigation("Petitions");
                 });
 
             modelBuilder.Entity("Core.Entities.Customer", b =>
@@ -545,11 +646,20 @@ namespace Infrastructure.Migrations
                     b.Navigation("Accounts");
 
                     b.Navigation("CreditCards");
+
+                    b.Navigation("Petitions");
+
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Core.Entities.Enterprise", b =>
                 {
                     b.Navigation("PromotionsEnterprises");
+                });
+
+            modelBuilder.Entity("Core.Entities.Product", b =>
+                {
+                    b.Navigation("Petitions");
                 });
 
             modelBuilder.Entity("Core.Entities.Promotion", b =>

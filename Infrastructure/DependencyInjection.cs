@@ -56,6 +56,7 @@ public static class DependencyInjection
 
         services.AddScoped<IPromotionRepository, PromotionRepository>();
         services.AddScoped<IEnterpriseRepository, EnterpriseRepository>();
+        services.AddScoped<IPetitionRepository, PetitionRepository>();
         return services;
     }
 
@@ -71,6 +72,9 @@ public static class DependencyInjection
         services.AddScoped<IAccountService, AccountService>();
         services.AddScoped<IEnterpriseService, EnterpriseService>();
         services.AddScoped<IPromotionService, PromotionService>();
+
+        services.AddScoped<IPetitionService, PetitionService>();
+
 
         //token service with Jwt
         services.AddScoped<IJwtProvider, JwtProvider>();

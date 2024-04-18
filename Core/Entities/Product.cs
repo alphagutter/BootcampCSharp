@@ -9,21 +9,13 @@ namespace Core.Entities;
 public class Product
 {
     public int Id { get; set; }
-    
     //for default, the type will be a Current Account
     public ProductType Type { get; set; } = ProductType.CurrentAccount;
-    public DateTime ApplicationDate { get; set; }
-    public DateTime ApprovalDate { get; set; }
-
-    //the current type that the product will have
-    public int CurrencyId { get; set; }
-    public Currency Currency { get; set; } = new Currency();
 
 
-    //depending on which product type we choose, it will use one of this attributes
-    public CreditCard? CreditCard { get; set; }
-    public CurrentAccount? CurrentAccount { get; set; }
-    public CreditOnly? CreditOnly { get; set; }
+    //a list for all the petitions the user requests
+    public ICollection<Petition> Petitions { get; set; } = new List<Petition>();
+
 
 
 

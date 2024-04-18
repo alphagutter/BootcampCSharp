@@ -29,6 +29,9 @@ public class Customer
     public ICollection<Account> Accounts { get; set; } = new List<Account>();
     public ICollection<CreditCard> CreditCards { get; set; } = new List<CreditCard>();
 
-    //recently added
     public ICollection<Product> Products { get; set; } = new List<Product>();
+
+    //recently added
+    public ICollection<Petition> Petitions { get; set; } = new List<Petition>();
+
 }
