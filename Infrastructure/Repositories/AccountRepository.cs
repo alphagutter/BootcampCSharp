@@ -8,7 +8,6 @@ using Mapster;
 using Microsoft.EntityFrameworkCore;
 using Core.Constants;
 using Core.Exceptions;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Infrastructure.Repositories;
 
@@ -77,7 +76,7 @@ public class AccountRepository : IAccountRepository
     {
         var account = await _context.Accounts.FindAsync(model.Id);
 
-        if (account is null) throw new Exception("Account was not found");
+        if (account is null) throw new NotFoundByIdException("Account", model.Id);
         model.Adapt(account);
         _context.Accounts.Update(account);
         await _context.SaveChangesAsync();
@@ -95,7 +94,7 @@ public class AccountRepository : IAccountRepository
     {
         var account = await _context.Accounts.FindAsync(id);
 
-        if (account is null) throw new NotFoundException("Account with ID " + id + " was not found");
+        if (account is null) throw new NotFoundByIdException("Account", id);
 
         account.IsDeleted = IsDeletedStatus.True;
         //account.Status = AccountStatus.Inactive;
@@ -150,7 +149,7 @@ public class AccountRepository : IAccountRepository
             query = query.Where(x =>
                 x.Type == filter.ByType.Value);
         }
-
+            
         if (filter.ByNumber is not null)
         {
             query = query.Where(x =>

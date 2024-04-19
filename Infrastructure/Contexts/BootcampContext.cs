@@ -37,8 +37,9 @@ public partial class BootcampContext : DbContext
     public virtual DbSet<Enterprise> Enterprises { get; set; }
     public virtual DbSet<PromotionEnterprise> PromotionEnterprise { get; set; }
     public virtual DbSet<Petition> Petitions { get; set; }
-    //recently added
     public virtual DbSet<Product> Products { get; set; }
+    public virtual DbSet<Transfer> Transfers { get; set; }
+
 
 
 
@@ -73,8 +74,9 @@ public partial class BootcampContext : DbContext
 
         modelBuilder.ApplyConfiguration(new PetitionConfiguration());
 
-        //recently added
         modelBuilder.ApplyConfiguration(new ProductConfiguration());
+
+        modelBuilder.ApplyConfiguration(new TransferConfiguration());
 
 
 

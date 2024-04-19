@@ -15,6 +15,13 @@ public class MovementConfiguration : IEntityTypeConfiguration<Movement>
             .HasKey(e => e.Id)
             .HasName("Movements_pkey");
 
+        entity
+            .Property(e => e.Description);
+
+        entity
+            .Property(e => e.MovementType);
+
+
 
         /*for changes made in 'Account' table*/
         entity

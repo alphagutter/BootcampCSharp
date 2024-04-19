@@ -1,12 +1,16 @@
-﻿using Core.Interfaces.Repositories;
+﻿using Core.Constants;
+using Core.Entities;
+using Core.Interfaces.Repositories;
 using Core.Models;
 using Core.Requests.MovementModel;
 using Infrastructure.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
 public class MovementRepository : IMovementRepository
 {
+
     private readonly BootcampContext _context;
 
     public MovementRepository(BootcampContext context)
@@ -14,12 +18,12 @@ public class MovementRepository : IMovementRepository
         _context = context;
     }
 
-    public async Task<MovementDTO> Add(CreateMovementRequest request)
+    public Task<MovementDTO> Add(CreateMovementRequest request)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<MovementDTO> GetById(int id)
+    public Task<MovementDTO> GetById(int id)
     {
         throw new NotImplementedException();
     }

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alpha Gutter\\source\\repos\\alphagutter\\BootcampCSharp\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alpha Gutter\\source\\repos\\alphagutter\\BootcampCSharp\\Core\\Core.csproj": {
+    "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alpha Gutter\\source\\repos\\alphagutter\\BootcampCSharp\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\Alpha Gutter\\source\\repos\\alphagutter\\BootcampCSharp\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\Alpha Gutter\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alpha Gutter\\source\\repos\\alphagutter\\BootcampCSharp\\Core\\obj\\",
+        "projectPath": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\Bootcamp-4\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Alpha Gutter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bootcamp-4\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -64,17 +69,21 @@
         }
       }
     },
-    "C:\\Users\\Alpha Gutter\\source\\repos\\alphagutter\\BootcampCSharp\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alpha Gutter\\source\\repos\\alphagutter\\BootcampCSharp\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\Alpha Gutter\\source\\repos\\alphagutter\\BootcampCSharp\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Alpha Gutter\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alpha Gutter\\source\\repos\\alphagutter\\BootcampCSharp\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Bootcamp-4\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Alpha Gutter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bootcamp-4\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,14 +91,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Alpha Gutter\\source\\repos\\alphagutter\\BootcampCSharp\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\Alpha Gutter\\source\\repos\\alphagutter\\BootcampCSharp\\Core\\Core.csproj"
+              "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Core\\Core.csproj"
               }
             }
           }
