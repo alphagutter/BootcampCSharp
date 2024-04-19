@@ -43,3 +43,12 @@ C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\Infrastructure\obj
 C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\Infrastructure\obj\Debug\net7.0\Infrastructure.dll
 C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\Infrastructure\obj\Debug\net7.0\refint\Infrastructure.dll
 C:\Users\Alpha Gutter\Source\Repos\alphagutter\BootcampCSharp\Infrastructure\obj\Debug\net7.0\Infrastructure.pdb
+C:\Users\Alpha Gutter\source\repos\alphagutter\BootcampCSharp\Infrastructure\bin\Debug\net7.0\Infrastructure.deps.json
+C:\Users\Alpha Gutter\source\repos\alphagutter\BootcampCSharp\Infrastructure\bin\Debug\net7.0\Infrastructure.runtimeconfig.json
+C:\Users\Alpha Gutter\source\repos\alphagutter\BootcampCSharp\Infrastructure\bin\Debug\net7.0\Infrastructure.dll
+C:\Users\Alpha Gutter\source\repos\alphagutter\BootcampCSharp\Infrastructure\bin\Debug\net7.0\Infrastructure.pdb
+C:\Users\Alpha Gutter\source\repos\alphagutter\BootcampCSharp\Infrastructure\bin\Debug\net7.0\Core.dll
+C:\Users\Alpha Gutter\source\repos\alphagutter\BootcampCSharp\Infrastructure\bin\Debug\net7.0\Core.pdb
+C:\Users\Alpha Gutter\source\repos\alphagutter\BootcampCSharp\Infrastructure\obj\Debug\net7.0\Infrastr.15EFFBFE.Up2Date
+C:\Users\Alpha Gutter\source\repos\alphagutter\BootcampCSharp\Infrastructure\obj\Debug\net7.0\Infrastructure.genruntimeconfig.cache
+C:\Users\Alpha Gutter\source\repos\alphagutter\BootcampCSharp\Infrastructure\obj\Debug\net7.0\ref\Infrastructure.dll

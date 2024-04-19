@@ -30,17 +30,26 @@ namespace Infrastructure.Repositories
             var customer = await _context.Promotions.FindAsync(model.CustomerId);
             var bank = await _context.Customers.FindAsync();
 
+            //it will show all the tables that are correlated to the Petition
+            var newpetition = await _context.Petitions
+                .Include(i => i.Currency)
+                .Include(i => i.Product)
+                .Include(i => i.Customer)
+                .ThenInclude(i => i.Bank)
+                    .SingleOrDefaultAsync(i => i.Id == petition.Id);
 
-            var petitionDTO = petition.Adapt<PetitionDTO>();
+            var petitionDTO = newpetition.Adapt<PetitionDTO>();
             return petitionDTO;
         }
 
         public async Task<PetitionDTO> GetById(int id)
         {
             var petition = await _context.Petitions
+                .Include(p => p.Product)
                 .Include(p => p.Currency)
                 .Include(p => p.Customer)
-            .SingleOrDefaultAsync(p => p.Id == id);
+                .ThenInclude(p => p.Bank)
+                    .SingleOrDefaultAsync(p => p.Id == id);
 
             if (petition is null) throw new NotFoundByIdException("Petition", id);
 

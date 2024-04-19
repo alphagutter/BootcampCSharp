@@ -11,14 +11,14 @@ namespace Core.Requests.PetitionModel;
 
 public class CreatePetitionRequest
 {
-
-
-    public decimal Amount { get; set; }
-    public string Term { get; set; } = string.Empty;
     public DateTime RequestDate { get; set; }
-    public DateTime? ApprovalDate { get; set; }
+    
+    //the user will (obviously) not be allowed to select his own approval date
+    //public DateTime? ApprovalDate { get; set; }
     public ProductType Type { get; set; }
     public PetitionStatus Status { get; set; } = PetitionStatus.Pending;
+    
+    public int ProductId { get; set; }
     public int CustomerId { get; set; }
     public int CurrencyId { get; set; }
 }

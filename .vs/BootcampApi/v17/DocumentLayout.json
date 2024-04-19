@@ -1,16 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|c:\\users\\bootcamp-4\\source\\repos\\bootcampapi2\\bootcampcsharp\\infrastructure\\repositories\\petitionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\petitionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|c:\\users\\bootcamp-4\\source\\repos\\bootcampapi2\\bootcampcsharp\\infrastructure\\repositories\\promotionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D2CE5215-3698-4D79-A443-15D250E7993C}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\promotionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\Alpha Gutter\\source\\repos\\alphagutter\\BootcampCSharp\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -27,32 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PromotionRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Repositories\\PromotionRepository.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\PromotionRepository.cs",
-              "ToolTip": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Repositories\\PromotionRepository.cs",
-              "RelativeToolTip": "Infrastructure\\Repositories\\PromotionRepository.cs",
-              "ViewState": "AQIAADYAAAAAAAAAAAAowFAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T13:10:08.454Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PetitionRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Repositories\\PetitionRepository.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\PetitionRepository.cs",
-              "ToolTip": "C:\\Users\\Bootcamp-4\\source\\repos\\BootcampApi2\\BootcampCSharp\\Infrastructure\\Repositories\\PetitionRepository.cs",
-              "RelativeToolTip": "Infrastructure\\Repositories\\PetitionRepository.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAAB4AAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T13:08:53.816Z",
-              "EditorCaption": ""
             }
           ]
         }

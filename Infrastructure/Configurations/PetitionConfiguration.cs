@@ -14,20 +14,17 @@ public class PetitionConfiguration : IEntityTypeConfiguration<Petition>
             .HasName("Petition_pkey");
 
         entity
-            .Property(r => r.Amount)
-            .IsRequired();
+            .HasOne(petition => petition.Currency)
+            .WithMany(currency => currency.Petitions)
+            .HasForeignKey(petitions => petitions.CurrencyId);
+        entity
+            .HasOne(petition => petition.Customer)
+            .WithMany(customer => customer.Petitions)
+            .HasForeignKey(petitions => petitions.CustomerId);
 
         entity
-            .Property(r => r.Term)
-            .IsRequired();
-
-        entity
-            .HasOne(r => r.Currency)
-            .WithMany(c => c.Petitions)
-            .HasForeignKey(r => r.CurrencyId);
-        entity
-            .HasOne(r => r.Customer)
-            .WithMany(c => c.Petitions)
-            .HasForeignKey(r => r.CustomerId);
+            .HasOne(petition => petition.Product)
+            .WithMany(product => product.Petitions)
+            .HasForeignKey(petitions => petitions.ProductId);
     }
 }

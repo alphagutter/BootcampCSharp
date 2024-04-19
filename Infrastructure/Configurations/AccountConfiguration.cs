@@ -27,10 +27,17 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
             .WithMany(customer => customer.Accounts)
             .HasForeignKey(account => account.CustomerId);
 
+
+        /*for changes made in 'Account' table*/
         entity
             .HasMany(account => account.Movements)
             .WithOne(movement => movement.Account)
-            .HasForeignKey(movement => movement.AccountId);
+            .HasForeignKey(movement => movement.OriginAccountId);
+        
+        entity
+            .HasMany(account => account.Movements)
+            .WithOne(movement => movement.Account)
+            .HasForeignKey(movement => movement.DestinationAccountId);
 
         entity
             .HasOne(account => account.SavingAccount)
