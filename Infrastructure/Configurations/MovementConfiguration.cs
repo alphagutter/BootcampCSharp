@@ -15,11 +15,13 @@ public class MovementConfiguration : IEntityTypeConfiguration<Movement>
             .HasKey(e => e.Id)
             .HasName("Movements_pkey");
 
-        entity
-            .Property(e => e.Description);
 
         entity
-            .Property(e => e.MovementType);
+            .Property(e => e.Destination);
+
+        entity
+            .Property(e => e.MovementType)
+            .IsRequired();
 
 
 
@@ -29,10 +31,6 @@ public class MovementConfiguration : IEntityTypeConfiguration<Movement>
             .WithMany(account => account.Movements)
             .HasForeignKey(movements => movements.OriginAccountId);
         
-        entity
-            .HasOne(movements => movements.Account)
-            .WithMany(account => account.Movements)
-            .HasForeignKey(movements => movements.DestinationAccountId);
 
 
     }

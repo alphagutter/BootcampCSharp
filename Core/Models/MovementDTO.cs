@@ -8,9 +8,10 @@ namespace Core.Models;
 public class MovementDTO
 {
     public int Id { get; set; }
-    public string Description { get; set; } = string.Empty;
+    public string Destination { get; set; } = string.Empty;
     public decimal Amount { get; set; }
-    public string MovementType { get; set; } = string.Empty;
+    public MovementType MovementType { get; set; } = MovementType.Transfer;
+    public DateTime TransferredDateTime { get; set; }
     public int OriginAccountId { get; set; }
     public int DestinationAccountId { get; set; }
 

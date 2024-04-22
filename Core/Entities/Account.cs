@@ -19,6 +19,6 @@ public class Account
     public CurrentAccount? CurrentAccount { get; set; }
 
     public virtual ICollection<Movement> Movements { get; set; } = new List<Movement>();
-    public ICollection<AccountTransfer> AccountTransfers { get; set; } = new List<AccountTransfer>();
+    public virtual ICollection<Transfer> Transfers { get; set; } = new List<Transfer>();
 
 }

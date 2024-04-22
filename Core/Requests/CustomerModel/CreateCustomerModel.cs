@@ -17,5 +17,5 @@ public class CreateCustomerModel
     public string? Phone { get; set; }
     public string CustomerStatus { get; set; } = string.Empty;  //has to be one of the valid Statuses - required
     public DateTime? Birth { get; set; }
-    public BankDTO Bank { get; set; } = null!;
+    public int BankId { get; set; }
 }

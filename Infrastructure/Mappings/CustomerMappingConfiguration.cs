@@ -25,8 +25,7 @@ public class CustomerMappingConfiguration : IRegister
             .Map(dest => dest.Phone, src => src.Phone)
             .Map(dest => dest.CustomerStatus, src => Enum.Parse<CustomerStatus>(src.CustomerStatus))
             .Map(dest => dest.Birth, src => src.Birth)
-            .Map(dest => dest.BankId, src => src.Bank.Id)
-            .Map(dest => dest.Bank, src => src.Bank);
+            .Map(dest => dest.BankId, src => src.BankId);
 
         //origin to destination(Customer to CustomerDTO)
 

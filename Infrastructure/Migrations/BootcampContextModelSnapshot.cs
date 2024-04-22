@@ -68,29 +68,6 @@ namespace Infrastructure.Migrations
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("Core.Entities.AccountTransfer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AccountId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("TransferId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
-
-                    b.HasIndex("TransferId");
-
-                    b.ToTable("AccountTransfer");
-                });
-
             modelBuilder.Entity("Core.Entities.Bank", b =>
                 {
                     b.Property<int>("Id")
@@ -343,7 +320,7 @@ namespace Infrastructure.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("numeric");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Destination")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -356,10 +333,13 @@ namespace Infrastructure.Migrations
                     b.Property<int>("OriginAccountId")
                         .HasColumnType("integer");
 
+                    b.Property<DateTime?>("TransferredDateTime")
+                        .HasColumnType("timestamp with time zone");
+
                     b.HasKey("Id")
                         .HasName("Movements_pkey");
 
-                    b.HasIndex("DestinationAccountId");
+                    b.HasIndex("OriginAccountId");
 
                     b.ToTable("Movements");
                 });
@@ -515,16 +495,19 @@ namespace Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("numeric");
-
                     b.Property<int>("DestinationAccountId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("MovementId")
                         .HasColumnType("integer");
 
                     b.Property<int>("OriginAccountId")
                         .HasColumnType("integer");
 
                     b.Property<int>("TransferStatus")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TransferType")
                         .HasColumnType("integer");
 
                     b.Property<DateTime?>("TransferredDateTime")
@@ -534,6 +517,10 @@ namespace Infrastructure.Migrations
                         .HasName("Transfer_pkey");
 
                     b.HasIndex("DestinationAccountId");
+
+                    b.HasIndex("MovementId");
+
+                    b.HasIndex("OriginAccountId");
 
                     b.ToTable("Transfers");
                 });
@@ -555,25 +542,6 @@ namespace Infrastructure.Migrations
                     b.Navigation("Currency");
 
                     b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("Core.Entities.AccountTransfer", b =>
-                {
-                    b.HasOne("Core.Entities.Account", "Account")
-                        .WithMany("AccountTransfers")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Core.Entities.Transfer", "Transfer")
-                        .WithMany("AccountTransfers")
-                        .HasForeignKey("TransferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
-
-                    b.Navigation("Transfer");
                 });
 
             modelBuilder.Entity("Core.Entities.CreditCard", b =>
@@ -621,7 +589,7 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Core.Entities.Account", "Account")
                         .WithMany("Movements")
-                        .HasForeignKey("DestinationAccountId")
+                        .HasForeignKey("OriginAccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -694,24 +662,38 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Core.Entities.Transfer", b =>
                 {
-                    b.HasOne("Core.Entities.Account", "DestinationAccount")
-                        .WithMany()
+                    b.HasOne("Core.Entities.Account", null)
+                        .WithMany("Transfers")
                         .HasForeignKey("DestinationAccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("DestinationAccount");
+                    b.HasOne("Core.Entities.Movement", "Movement")
+                        .WithMany()
+                        .HasForeignKey("MovementId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Core.Entities.Account", "OriginAccount")
+                        .WithMany()
+                        .HasForeignKey("OriginAccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Movement");
+
+                    b.Navigation("OriginAccount");
                 });
 
             modelBuilder.Entity("Core.Entities.Account", b =>
                 {
-                    b.Navigation("AccountTransfers");
-
                     b.Navigation("CurrentAccount");
 
                     b.Navigation("Movements");
 
                     b.Navigation("SavingAccount");
+
+                    b.Navigation("Transfers");
                 });
 
             modelBuilder.Entity("Core.Entities.Bank", b =>
@@ -752,11 +734,6 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Core.Entities.Promotion", b =>
                 {
                     b.Navigation("PromotionsEnterprises");
-                });
-
-            modelBuilder.Entity("Core.Entities.Transfer", b =>
-                {
-                    b.Navigation("AccountTransfers");
                 });
 #pragma warning restore 612, 618
         }

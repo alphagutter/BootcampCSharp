@@ -55,7 +55,7 @@ public static class DependencyInjection
         services.AddScoped<IPromotionRepository, PromotionRepository>();
         services.AddScoped<IEnterpriseRepository, EnterpriseRepository>();
         services.AddScoped<IPetitionRepository, PetitionRepository>();
-        services.AddScoped<IMovementRepository, MovementRepository>();
+        services.AddScoped<ITransferRepository, TransferRepository>();
         return services;
     }
 
@@ -72,7 +72,7 @@ public static class DependencyInjection
         services.AddScoped<IEnterpriseService, EnterpriseService>();
         services.AddScoped<IPromotionService, PromotionService>();
         services.AddScoped<IPetitionService, PetitionService>();
-        services.AddScoped<IMovementService, MovementService>();
+        services.AddScoped<ITransferService, TransferService>();
 
 
         //token service with Jwt

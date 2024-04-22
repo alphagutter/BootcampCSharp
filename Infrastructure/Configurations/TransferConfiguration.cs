@@ -13,8 +13,13 @@ public class TransferConfiguration : IEntityTypeConfiguration<Transfer>
 
 
         entity
-            .HasMany(transfer => transfer.AccountTransfers)
-            .WithOne(accounttransfers => accounttransfers.Transfer)
-            .HasForeignKey(account => account.TransferId);
+            .HasOne(transfer => transfer.OriginAccount)
+            .WithMany(srcAccount => srcAccount.Transfers)
+            .HasForeignKey(transfer => transfer.OriginAccountId);
+    
+        entity
+            .HasOne<Account>()
+            .WithMany(targetAccount => targetAccount.Transfers)
+            .HasForeignKey(transfer => transfer.DestinationAccountId);
     }
 }
