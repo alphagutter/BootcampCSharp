@@ -39,6 +39,9 @@ public partial class BootcampContext : DbContext
     public virtual DbSet<Petition> Petitions { get; set; }
     public virtual DbSet<Product> Products { get; set; }
     public virtual DbSet<Transfer> Transfers { get; set; }
+    public virtual DbSet<Service> Services { get; set; }
+    public virtual DbSet<Payment> Payments { get; set; }
+    public virtual DbSet<Deposit> Deposits { get; set; }
 
 
 
@@ -77,6 +80,12 @@ public partial class BootcampContext : DbContext
         modelBuilder.ApplyConfiguration(new ProductConfiguration());
 
         modelBuilder.ApplyConfiguration(new TransferConfiguration());
+
+        modelBuilder.ApplyConfiguration(new ServiceConfiguration());
+
+        modelBuilder.ApplyConfiguration(new PaymentConfiguration());
+
+        modelBuilder.ApplyConfiguration(new DepositConfiguration());
 
 
 

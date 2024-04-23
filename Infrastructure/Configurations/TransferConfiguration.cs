@@ -12,14 +12,14 @@ public class TransferConfiguration : IEntityTypeConfiguration<Transfer>
         entity.HasKey(e => e.Id).HasName("Transfer_pkey");
 
 
-        entity
-            .HasOne(transfer => transfer.OriginAccount)
-            .WithMany(srcAccount => srcAccount.Transfers)
-            .HasForeignKey(transfer => transfer.OriginAccountId);
+        //entity
+        //    .HasOne(transfer => transfer.OriginAccount)
+        //    .WithMany(srcAccount => srcAccount.Transfers)
+        //    .HasForeignKey(transfer => transfer.OriginAccountId);
     
-        entity
-            .HasOne<Account>()
-            .WithMany(targetAccount => targetAccount.Transfers)
-            .HasForeignKey(transfer => transfer.DestinationAccountId);
+        //entity
+        //    .HasOne(transfer => transfer.OriginAccount)
+        //    .WithMany(targetAccount => targetAccount.Transfers)
+        //    .HasForeignKey(transfer => transfer.DestinationAccountId);
     }
 }

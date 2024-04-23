@@ -1,6 +1,7 @@
 ﻿using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Reflection.Emit;
 
 namespace Infrastructure.Configurations;
 
@@ -37,7 +38,7 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
         entity
             .HasMany(account => account.Movements)
             .WithOne(movement => movement.Account)
-            .HasForeignKey(movement => movement.OriginAccountId);
+            .HasForeignKey(movement => movement.DestinationAccountId);
 
         entity
             .HasOne(account => account.SavingAccount)

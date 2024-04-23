@@ -14,5 +14,6 @@ public class TransferDTO
     public TransferType TransferType { get; set; }
     public TransferStatus TransferStatus { get; set; }
     public int DestinationAccountId { get; set; }
+    public AccountDTO DestinationAccount { get; set; } = null!;
 
 }
