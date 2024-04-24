@@ -14,6 +14,10 @@ public class PaymentService : IPaymentService
 {
     private readonly IPaymentRepository _repository;
 
+    public PaymentService(IPaymentRepository repository)
+    {
+        _repository = repository;
+    }
 
     public async Task<PaymentDTO> Add(CreatePaymentRequest request)
     {

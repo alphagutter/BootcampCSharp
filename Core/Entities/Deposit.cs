@@ -7,5 +7,7 @@ public class Deposit
     public DateTime DepositDateTime { get; set; }
     // Otras propiedades del depósito
     public int AccountId { get; set; }
-    public Account Account { get; set; } = new Account();
+    public Account Account { get; set; } = null!;
+    public int BankId { get; set; }
+    public Bank Bank { get; set; } = null!;
 }

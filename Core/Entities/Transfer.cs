@@ -7,13 +7,22 @@ namespace Core.Entities;
 public class Transfer
 {
     public int Id { get; set; }
+    public decimal Amount { get; set; }
     public int OriginAccountId { get; set; }
     public Account OriginAccount { get; set; } = null!;
-    public DateTime? TransferredDateTime { get; set; }
-    public int MovementId { get; set; }
-    public Movement Movement { get; set; } = null!;
-    public TransferType TransferType { get; set; } = TransferType.SameBank;
-    public TransferStatus TransferStatus { get; set; } = TransferStatus.Pending;
+    public DateTime TransferredDateTime { get; set; }
+    public string Description { get; set; } = string.Empty;
+    //public int MovementId { get; set; }
+    //public Movement Movement { get; set; } = null!;
+    //public TransferType TransferType { get; set; } = TransferType.SameBank;
+    //public TransferStatus TransferStatus { get; set; } = TransferStatus.Pending;
 
     public int DestinationAccountId { get; set; }
+
+    //we don't use the Account data, instead of that, we just use its currency and bank
+    public int BankId { get; set; }
+    public Bank Bank { get; set; } = null!;
+    public int CurrencyId { get; set; }
+    public Currency Currency { get; set; } = null!;
+    //public Account DestinationAccount { get; set; } = null!;
 }

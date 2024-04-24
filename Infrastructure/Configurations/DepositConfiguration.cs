@@ -26,6 +26,10 @@ public class DepositConfiguration : IEntityTypeConfiguration<Deposit>
             .HasForeignKey(d => d.AccountId)
             .IsRequired();
 
+        entity
+            .HasOne(deposit => deposit.Bank)
+            .WithMany(bank => bank.Deposits)
+            .HasForeignKey(deposit => deposit.BankId);
 
     }
 

@@ -12,6 +12,6 @@ public class Currency
 
     //recently added
     public ICollection<Petition> Petitions { get; set; } = new List<Petition>();
-
+    public virtual ICollection<Transfer> Transfers { get; set; } = new List<Transfer>();
 
 }

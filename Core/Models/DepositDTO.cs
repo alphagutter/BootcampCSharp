@@ -9,5 +9,8 @@ public class DepositDTO
     public decimal Amount { get; set; }
     public DateTime DepositDateTime { get; set; }
     // Otras propiedades del depósito
+    public int AccountId { get; set; }
     public AccountDTO AccountDTO { get; set; } = null!;
+    public int BankId { get; set; }
+    public BankDTO Bank { get; set; } = null!;
 }

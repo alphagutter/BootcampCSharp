@@ -16,6 +16,7 @@ public class PaymentMappingConfiguration : IRegister
             .Map(dest => dest.DocumentNumber, src => src.DocumentNumber)
             .Map(dest => dest.Amount, src => src.Amount)
             .Map(dest => dest.OriginAccountId, src => src.OriginAccountId)
+            .Map(dest => dest.PaymentDateTime, src => DateTime.Now)
             .Map(dest => dest.Description, src => src.Description)
             .Map(dest => dest.ServiceId, src => src.ServiceId);
 
@@ -23,6 +24,7 @@ public class PaymentMappingConfiguration : IRegister
             .Map(dest => dest.DocumentNumber, src => src.DocumentNumber)
             .Map(dest => dest.Amount, src => src.Amount)
             .Map(dest => dest.OriginAccountDTO, src => src.OriginAccountId)
+            .Map(dest => dest.PaymentDateTime, src => src.PaymentDateTime)
             .Map(dest => dest.Description, src => src.Description)
             .Map(dest => dest.ServiceDTO, src => src.ServiceId);
 

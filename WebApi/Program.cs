@@ -42,6 +42,11 @@ builder.Services.AddSwaggerGen(option =>
 //added during the token verification creation
 builder.Services.AddWebApi(builder.Configuration);
 
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(8080);  //cambia el puerto según sea necesario
+});
+
 
 var app = builder.Build();
 

@@ -3,6 +3,7 @@ using Core.Interfaces.Repositories;
 using Core.Interfaces.Services;
 using Core.Models;
 using Core.Requests.DepositModel;
+using Infrastructure.Repositories;
 
 namespace Infrastructure.Services;
 
@@ -14,6 +15,10 @@ public class DepositService : IDepositService
 {
     private readonly IDepositRepository _repository;
 
+    public DepositService(IDepositRepository depositRepository)
+    {
+        _repository = depositRepository;
+    }
 
     public async Task<DepositDTO> Add(CreateDepositModel model)
     {

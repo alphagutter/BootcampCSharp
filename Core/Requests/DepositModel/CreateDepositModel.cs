@@ -5,8 +5,7 @@ namespace Core.Requests.DepositModel;
 
 public class CreateDepositModel
 {
-    public decimal Amount { get; set; }
-    public DateTime DepositDateTime { get; set; }
-    // Otras propiedades del depósito
+    public int BankId { get; set; }
     public int AccountId { get; set; }
+    public decimal Amount { get; set; }
 }

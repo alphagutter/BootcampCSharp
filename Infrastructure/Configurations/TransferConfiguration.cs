@@ -11,15 +11,38 @@ public class TransferConfiguration : IEntityTypeConfiguration<Transfer>
     {
         entity.HasKey(e => e.Id).HasName("Transfer_pkey");
 
+        entity
+            .Property(e => e.Amount)
+            .IsRequired();
 
-        //entity
-        //    .HasOne(transfer => transfer.OriginAccount)
-        //    .WithMany(srcAccount => srcAccount.Transfers)
-        //    .HasForeignKey(transfer => transfer.OriginAccountId);
-    
-        //entity
-        //    .HasOne(transfer => transfer.OriginAccount)
-        //    .WithMany(targetAccount => targetAccount.Transfers)
-        //    .HasForeignKey(transfer => transfer.DestinationAccountId);
+        entity
+            .Property(e => e.TransferredDateTime)
+            .IsRequired();
+        
+        entity
+            .Property(e => e.Description)
+            .IsRequired();
+
+
+
+        entity
+            .HasOne(transfer => transfer.OriginAccount)
+            .WithMany(srcAccount => srcAccount.Transfers)
+            .HasForeignKey(transfer => transfer.OriginAccountId);
+
+        entity
+            .HasOne<Account>()
+            .WithMany(destinationAccount => destinationAccount.Transfers)
+            .HasForeignKey(transfer => transfer.DestinationAccountId);
+
+        entity
+            .HasOne(transfer => transfer.Bank)
+            .WithMany(bank => bank.Transfers)
+            .HasForeignKey(transfer => transfer.BankId);
+
+        entity
+            .HasOne(transfer => transfer.Currency)
+            .WithMany(currency => currency.Transfers)
+            .HasForeignKey(transfer => transfer.CurrencyId);
     }
 }

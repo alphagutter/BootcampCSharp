@@ -13,9 +13,13 @@ public class EnterpriseController : BaseApiController
     {
         _service = service;
     }
+
     [HttpGet("{id}")]
-    public async Task<IActionResult> Get(int id)
-=> Ok(await _service.GetById(id));
+    public async Task<IActionResult> Get([FromRoute] int id)
+    {
+        return Ok(await _service.GetById(id));
+
+    }
 
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateEnterpriseModel request)

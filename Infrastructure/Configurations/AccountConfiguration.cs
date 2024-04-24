@@ -28,18 +28,6 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
             .WithMany(customer => customer.Accounts)
             .HasForeignKey(account => account.CustomerId);
 
-
-        /*for changes made in 'Account' table*/
-        entity
-            .HasMany(account => account.Movements)
-            .WithOne(movement => movement.Account)
-            .HasForeignKey(movement => movement.OriginAccountId);
-        
-        entity
-            .HasMany(account => account.Movements)
-            .WithOne(movement => movement.Account)
-            .HasForeignKey(movement => movement.DestinationAccountId);
-
         entity
             .HasOne(account => account.SavingAccount)
             .WithOne(savingAccount => savingAccount.Account)
@@ -49,6 +37,21 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
             .HasOne(account => account.CurrentAccount)
             .WithOne(currentAccount => currentAccount.Account)
             .HasForeignKey<CurrentAccount>(savingAccount => savingAccount.AccountId);
+
+        entity
+            .HasMany(account => account.Transfers)
+            .WithOne(transfer => transfer.OriginAccount)
+            .HasForeignKey(transfer => transfer.OriginAccountId);
+
+        entity
+            .HasMany(account => account.Payments)
+            .WithOne(paymentService => paymentService.OriginAccount)
+            .HasForeignKey(paymentService => paymentService.OriginAccountId);
+
+        entity
+            .HasMany(account => account.Deposits)
+            .WithOne(deposit => deposit.Account)
+            .HasForeignKey(deposit => deposit.AccountId);
 
 
     }

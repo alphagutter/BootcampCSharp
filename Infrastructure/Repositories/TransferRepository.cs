@@ -22,7 +22,7 @@ public class TransferRepository : ITransferRepository
     public async Task<TransferDTO> Transfer(TransferRequest request)
     {
         var transfer = request.Adapt<Transfer>();
-        transfer.Movement = request.Adapt<Movement>();
+
 
         var originAccount = await _transfercontext.Accounts
                                           .Include(a => a.Customer)
@@ -39,9 +39,9 @@ public class TransferRepository : ITransferRepository
                                               (a.Number == request.AccountNumber) &&
                                               (a.Customer.DocumentNumber == request.DocumentNumber));
 
-        if (originAccount is null || destinationAccount is null)
+        if (originAccount == null || destinationAccount == null)
         {
-            throw new Exception("Account must exist.");
+            throw new Exception("Both Accounts must exist.");
         }
 
 
@@ -55,51 +55,63 @@ public class TransferRepository : ITransferRepository
 
         if (flag == true)
         {
-            //we make the balance
-            originAccount.Balance = originAccount.Balance - request.Amount;
-            _transfercontext.Accounts.Update(originAccount);
+            ////we make the balance
+            //originAccount.Balance = originAccount.Balance - request.Amount;
+            //_transfercontext.Accounts.Update(originAccount);
 
-            destinationAccount.Balance = destinationAccount.Balance + request.Amount;
-            _transfercontext.Accounts.Update(destinationAccount);
+            //destinationAccount.Balance = destinationAccount.Balance + request.Amount;
+            //_transfercontext.Accounts.Update(destinationAccount);
 
-            var newMovementId = _transfercontext.Movements.Count() == 0 ? 1 : _transfercontext.Movements.Max(c => c.Id) + 1;
-            transfer.Id = newMovementId;
+            //var newMovementId = _transfercontext.Movements.Count() == 0 ? 1 : _transfercontext.Movements.Max(c => c.Id) + 1;
+            //transfer.Id = newMovementId;
 
-            _transfercontext.Movements.Add(transfer.Movement);
+            //_transfercontext.Movements.Add(transfer.Movement);
 
-            transfer.DestinationAccountId = destinationAccount.Id;
-            transfer.MovementId = newMovementId;
-            _transfercontext.Transfers.Add(transfer);
+            //transfer.DestinationAccountId = destinationAccount.Id;
+            //transfer.MovementId = newMovementId;
+            //_transfercontext.Transfers.Add(transfer);
 
-            await _transfercontext.SaveChangesAsync();
+            //await _transfercontext.SaveChangesAsync();
 
 
+                //we change the balances for the accounts
+                originAccount.Balance = originAccount.Balance - request.Amount;
+                    _transfercontext.Accounts.Update(originAccount);
+
+                destinationAccount.Balance = destinationAccount.Balance + request.Amount;
+                    _transfercontext.Accounts.Update(destinationAccount);
+
+                
+                //it adds the destination account id to the transfer
+                transfer.DestinationAccountId = destinationAccount.Id;
+                    _transfercontext.Transfers.Add(transfer);
+
+                await _transfercontext.SaveChangesAsync();
+
+             var transferDTO = await _transfercontext.Transfers
+                .FirstOrDefaultAsync(t => t.Id == transfer.Id);
+
+            return transferDTO.Adapt<TransferDTO>();
         }
         else
         {
             throw new TransferErrorException();
         }
 
-            var createTransfer = await _transfercontext.Transfers
-                                               .Include(t => t.Movement)
-                                               .FirstOrDefaultAsync(t => t.Id == transfer.Id);
 
-
-            createTransfer!.Movement.Account = originAccount;
-            createTransfer!.OriginAccount = destinationAccount;
-
-            return createTransfer.Adapt<TransferDTO>();
 
 
 
     }
 
+
+    //It will check every validation it needs to Make the Transfers between Accounts    
     public bool ValidateAccounts(Account originAccount, Account destinationAccount, decimal amount)
     {
 
         if (originAccount.Type != destinationAccount.Type)
         {
-            throw new Exception("It has to be the same type of account.");
+            throw new Exception("It has to be the same account type.");
         }
 
         if (originAccount.CurrencyId != destinationAccount.CurrencyId)
@@ -109,7 +121,7 @@ public class TransferRepository : ITransferRepository
 
         if (amount > originAccount.Balance)
         {
-            throw new Exception("The transfer amount must not be greater than the current account balance.");
+            throw new Exception("The transfer amount must not be greater than current account's balance.");
         }
 
         if (originAccount.Status == AccountStatus.Inactive ||

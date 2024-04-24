@@ -17,6 +17,19 @@ public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
             .HasKey(p => p.Id)
             .HasName("payment_pkey");
 
+        entity
+            .Property(ps => ps.Amount)
+            .IsRequired();
+
+        entity
+            .Property(ps => ps.Description);
+
+
+        entity
+            .Property(ps => ps.PaymentDateTime)
+            .HasColumnType("timestamp without time zone")
+            .IsRequired();
+
 
         //relation with origin account
         entity

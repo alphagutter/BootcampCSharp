@@ -5,6 +5,8 @@ using Core.Interfaces.Services;
 using Core.Models;
 using Core.Requests.CreditCardModel;
 using Core.Requests.ServiceModel;
+using Infrastructure.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Services;
 
@@ -16,6 +18,10 @@ public class ServiceService : IServiceService
 {
     private readonly IServiceRepository _repository;
 
+    public ServiceService(IServiceRepository context)
+    {
+        _repository = context;
+    }
 
     public async Task<ServiceDTO> Add(CreateServiceModel model)
     {

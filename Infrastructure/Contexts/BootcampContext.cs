@@ -28,7 +28,7 @@ public partial class BootcampContext : DbContext
 
     public virtual DbSet<CurrentAccount> CurrentAccounts { get; set; }
 
-    public virtual DbSet<Movement> Movements { get; set; }
+    //public virtual DbSet<Movement> Movements { get; set; }
 
     public virtual DbSet<Currency> Currencies { get; set; }
 
@@ -65,7 +65,7 @@ public partial class BootcampContext : DbContext
 
         modelBuilder.ApplyConfiguration(new CurrencyConfiguration());
 
-        modelBuilder.ApplyConfiguration(new MovementConfiguration());
+        //modelBuilder.ApplyConfiguration(new MovementConfiguration());
         
         modelBuilder.ApplyConfiguration(new CreditCardConfiguration());
 
