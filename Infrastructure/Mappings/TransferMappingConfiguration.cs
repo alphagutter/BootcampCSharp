@@ -10,7 +10,7 @@ public class TransferMappingConfiguration : IRegister
     {
         config.NewConfig<TransferRequest, Transfer>()
             .Map(dest => dest.OriginAccountId, src => src.OriginAccountId)
-            .Map(dest => dest.BankId, src => src.BankId)
+            .Map(dest => dest.DestinationBankId, src => src.BankId)
             .Map(dest => dest.CurrencyId, src => src.CurrencyId)
             .Map(dest => dest.Amount, src => src.Amount)
             .Map(dest => dest.TransferredDateTime, src => DateTime.UtcNow)

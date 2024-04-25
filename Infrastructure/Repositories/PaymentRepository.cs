@@ -20,11 +20,12 @@ public class PaymentRepository : IPaymentRepository
         _context = context;
     }
 
-    //not implemented yet
     public async Task<PaymentDTO> Add(CreatePaymentRequest request)
     {
+        //we map the payment entity
         var payment = request.Adapt<Payment>();
 
+        //to see the account and service for the payment, we need to call it individually
         var accountforDTO = await _context.Accounts.FindAsync(payment.OriginAccountId);
         var serviceforDTO = await _context.Services.FindAsync(payment.ServiceId);
 
@@ -39,6 +40,9 @@ public class PaymentRepository : IPaymentRepository
 
         if (account == null) throw new NotFoundByIdException("Account", request.OriginAccountId);
 
+        //add a validation where, if the amount is major to the balance, it will throw an exception
+
+        //we substract the amount specified for the user
         account.Balance = account.Balance - request.Amount;
         _context.Accounts.Update(account);
 

@@ -59,6 +59,7 @@ public static class DependencyInjection
         services.AddScoped<IServiceRepository, ServiceRepository>();
         services.AddScoped<IPaymentRepository, PaymentRepository>();
         services.AddScoped<IDepositRepository, DepositRepository>();
+        services.AddScoped<IExtractionRepository, ExtractionRepository>();
         return services;
     }
 
@@ -79,6 +80,7 @@ public static class DependencyInjection
         services.AddScoped<IServiceService, ServiceService>();
         services.AddScoped<IPaymentService, PaymentService>();
         services.AddScoped<IDepositService, DepositService>();
+        services.AddScoped<IExtractionService, ExtractionService>();
 
 
         //token service with Jwt
@@ -108,7 +110,7 @@ public static class DependencyInjection
     public static IServiceCollection AddValidation(this IServiceCollection services)
     {
 
-        //check the obsolete service with the teacher
+                                        //check the obsolete service with the teacher//
         services.AddFluentValidationClientsideAdapters();
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 

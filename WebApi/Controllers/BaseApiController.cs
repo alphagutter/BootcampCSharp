@@ -8,7 +8,7 @@ namespace WebApi.Controllers;
 //we add an authorization for the access to the Api functions, can be abled after the token verification
 
 //for now, only people with the 'Admin' role can use the Api functions
-[Authorize(Roles ="Admin")]
+//[Authorize(Roles ="Admin")]
 public class BaseApiController : ControllerBase
 {
 }

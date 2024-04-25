@@ -55,23 +55,6 @@ public class TransferRepository : ITransferRepository
 
         if (flag == true)
         {
-            ////we make the balance
-            //originAccount.Balance = originAccount.Balance - request.Amount;
-            //_transfercontext.Accounts.Update(originAccount);
-
-            //destinationAccount.Balance = destinationAccount.Balance + request.Amount;
-            //_transfercontext.Accounts.Update(destinationAccount);
-
-            //var newMovementId = _transfercontext.Movements.Count() == 0 ? 1 : _transfercontext.Movements.Max(c => c.Id) + 1;
-            //transfer.Id = newMovementId;
-
-            //_transfercontext.Movements.Add(transfer.Movement);
-
-            //transfer.DestinationAccountId = destinationAccount.Id;
-            //transfer.MovementId = newMovementId;
-            //_transfercontext.Transfers.Add(transfer);
-
-            //await _transfercontext.SaveChangesAsync();
 
 
                 //we change the balances for the accounts
