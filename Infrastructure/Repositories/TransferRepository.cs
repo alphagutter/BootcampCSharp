@@ -35,9 +35,9 @@ public class TransferRepository : ITransferRepository
                                               .Include(a => a.Customer)
                                               .ThenInclude(c => c.Bank)
                                               .Include(a => a.Currency)
+                                              .Include(a => a.CurrentAccount)
                                               .FirstOrDefaultAsync(a =>
-                                              (a.Number == request.AccountNumber) &&
-                                              (a.Customer.DocumentNumber == request.DocumentNumber));
+                                              (a.Id == request.DestinationAccountId));
 
         if (originAccount == null || destinationAccount == null)
         {
@@ -47,10 +47,28 @@ public class TransferRepository : ITransferRepository
 
 
 
-
+                                    ///Basic Validations///
+        if (originAccount.Type != destinationAccount.Type)
+        {
+            throw new Exception("It has to be the same account type.");
+        }
 
         //it validates the accounts requirements for the transaction
-        var flag = ValidateAccounts(originAccount, destinationAccount, request.Amount);
+        var flag = false;
+
+
+        //if the bank is the same, it does not need the document number and currency
+        if (originAccount.Customer.BankId == destinationAccount.Customer.BankId)
+        {
+            flag = true;
+        }
+        else
+        {
+           flag = ValidateAccounts(originAccount, destinationAccount, request.Amount);
+
+        }
+            
+            
 
 
         if (flag == true)
@@ -67,6 +85,7 @@ public class TransferRepository : ITransferRepository
                 
                 //it adds the destination account id to the transfer
                 transfer.DestinationAccountId = destinationAccount.Id;
+                    transfer.DestinationAccount = destinationAccount;
                     _transfercontext.Transfers.Add(transfer);
 
                 await _transfercontext.SaveChangesAsync();
@@ -92,10 +111,6 @@ public class TransferRepository : ITransferRepository
     public bool ValidateAccounts(Account originAccount, Account destinationAccount, decimal amount)
     {
 
-        if (originAccount.Type != destinationAccount.Type)
-        {
-            throw new Exception("It has to be the same account type.");
-        }
 
         if (originAccount.CurrencyId != destinationAccount.CurrencyId)
         {

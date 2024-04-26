@@ -18,11 +18,11 @@ public class Transfer
     public TransferStatus TransferStatus { get; set; } = TransferStatus.Pending;
 
     public int DestinationAccountId { get; set; }
+    public Account? DestinationAccount { get; set; }
 
     //we don't use the Account data, instead of that, we just use its currency and bank
     public int DestinationBankId { get; set; }
     public Bank Bank { get; set; } = null!;
-    public int CurrencyId { get; set; }
+    public int DestinationCurrencyId { get; set; }
     public Currency Currency { get; set; } = null!;
-    //public Account DestinationAccount { get; set; } = null!;
 }

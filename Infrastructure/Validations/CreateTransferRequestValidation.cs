@@ -9,11 +9,9 @@ public class CreateTransferRequestValidation : AbstractValidator<TransferRequest
 
         RuleFor(request => request.Amount).GreaterThan(0).WithMessage("Amount must be greater than 0.");
 
-        RuleFor(request => request.DocumentNumber).NotEmpty().WithMessage("Document number is required.");
+        RuleFor(request => request.DestinationAccountId).NotEmpty().WithMessage("Document number is required.");
 
         RuleFor(request => request.OriginAccountId).NotEmpty().WithMessage("Origin account ID is required.");
-
-        RuleFor(request => request.AccountNumber).NotEmpty().WithMessage("Destination account number is required.");
 
     }
 

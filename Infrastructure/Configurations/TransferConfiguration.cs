@@ -31,11 +31,6 @@ public class TransferConfiguration : IEntityTypeConfiguration<Transfer>
             .HasForeignKey(transfer => transfer.OriginAccountId);
 
         entity
-            .HasOne<Account>()
-            .WithMany(destinationAccount => destinationAccount.Transfers)
-            .HasForeignKey(transfer => transfer.DestinationAccountId);
-
-        entity
             .HasOne(transfer => transfer.Bank)
             .WithMany(bank => bank.Transfers)
             .HasForeignKey(transfer => transfer.DestinationBankId);
@@ -43,6 +38,6 @@ public class TransferConfiguration : IEntityTypeConfiguration<Transfer>
         entity
             .HasOne(transfer => transfer.Currency)
             .WithMany(currency => currency.Transfers)
-            .HasForeignKey(transfer => transfer.CurrencyId);
+            .HasForeignKey(transfer => transfer.DestinationCurrencyId);
     }
 }

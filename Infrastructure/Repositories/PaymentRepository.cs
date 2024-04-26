@@ -35,12 +35,26 @@ public class PaymentRepository : IPaymentRepository
                                       .ThenInclude(c => c.Bank)
                                       .Include(a => a.Currency)
                                       .Include(a => a.CurrentAccount)
-                                      .FirstOrDefaultAsync(a => a.Id == request.OriginAccountId);
+                                      .FirstOrDefaultAsync(a => a.Id == request.OriginAccountId
+                                      && a.Customer.DocumentNumber == request.DocumentNumber
+                                      );
 
 
         if (account == null) throw new NotFoundByIdException("Account", request.OriginAccountId);
+        if (serviceforDTO == null) throw new Exception("Service does not exist");
 
-        //add a validation where, if the amount is major to the balance, it will throw an exception
+
+                                //Basic Validations
+        if (request.Amount <= 0)
+        {
+            throw new Exception("the Amount can not be 0 or negative");
+        }
+
+        if (account.Balance < request.Amount)
+        {
+            throw new Exception("Balance insufficient");
+        }
+
 
         //we substract the amount specified for the user
         account.Balance = account.Balance - request.Amount;
@@ -51,6 +65,11 @@ public class PaymentRepository : IPaymentRepository
         await _context.SaveChangesAsync();
 
         var paymentDTO = await _context.Payments
+            .Include(p => p.OriginAccount)
+            .ThenInclude(oa => oa.Currency)
+            .Include(p => p.OriginAccount)
+            .ThenInclude(oa => oa.Customer)
+            .ThenInclude(c => c.Bank)
             .FirstOrDefaultAsync(t => t.Id == payment.Id);
 
         return paymentDTO.Adapt<PaymentDTO>();

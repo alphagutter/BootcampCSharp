@@ -33,6 +33,14 @@ public class DepositRepository : IDepositRepository
         if (account == null) throw new NotFoundByIdException("Account", model.AccountId);
 
 
+                            ///Basic Validations     
+        if (account.Customer.BankId != deposit.BankId)
+        {
+            throw new Exception("Bank Id does not match to the customer");
+        }
+
+        if (deposit.Amount <= 0) throw new Exception("Amount must not be 0 or lower");
+
         if (account.CurrentAccount != null && model.Amount > account.CurrentAccount.OperationalLimit)
         {
             throw new Exception("The operation exceeds the operational limit.");
@@ -46,7 +54,12 @@ public class DepositRepository : IDepositRepository
         await _depositContext.SaveChangesAsync();
 
         var depositDTO = await _depositContext.Deposits
-                                           .FirstOrDefaultAsync(p => p.Id == deposit.Id);
+            .Include(d => d.Account)
+            .ThenInclude(a => a.Customer)
+            .ThenInclude(c => c.Bank)
+            .Include(d => d.Account)
+            .ThenInclude(a => a.CurrentAccount)
+            .FirstOrDefaultAsync(p => p.Id == deposit.Id);
 
         return depositDTO.Adapt<DepositDTO>();
     }

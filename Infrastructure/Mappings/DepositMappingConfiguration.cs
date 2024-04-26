@@ -18,13 +18,15 @@ public class DepositMappingConfiguration : IRegister
         config.NewConfig<CreateDepositModel, Deposit>()
             .Map(dest => dest.Amount, src => src.Amount)
             .Map(dest => dest.DepositDateTime, src => DateTime.UtcNow)
-            .Map(dest => dest.AccountId, src => src.AccountId);
+            .Map(dest => dest.AccountId, src => src.AccountId)
+            .Map(dest => dest.BankId, src => src.BankId);
 
 
         config.NewConfig<Deposit, DepositDTO>()
             .Map(dest => dest.Amount, src => src.Amount)
             .Map(dest => dest.DepositDateTime, src => src.DepositDateTime)
-            .Map(dest => dest.AccountDTO, src => src.AccountId);
+            .Map(dest => dest.AccountDTO, src => src.Account)
+            .Map(dest => dest.Bank, src => src.Bank);
 
 
 

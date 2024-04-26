@@ -23,9 +23,31 @@ public class ExtractionRepository : IExtractionRepository
 
         _context.Extractions.Add(extraction);
 
-        var originalAccount = await _context.Accounts.FindAsync(request.AccountId);
+        var originalAccount = await _context.Accounts
+                                    .Include(a => a.Currency)
+                                    .Include(a => a.Customer)
+                                    .ThenInclude(c => c.Bank)
+                                    .Include(a => a.SavingAccount)
+                                    .Include(a => a.CurrentAccount)
+                                    .FirstOrDefaultAsync(a => a.Id == request.AccountId);
 
         if (originalAccount == null) throw new NotFoundByIdException("Account", request.AccountId);
+
+                    //Basic Validations
+        if(request.Amount <= 0)
+        {
+            throw new Exception("the Amount can not be 0 or negative");
+        }
+
+        if (originalAccount.Balance < request.Amount)
+        {
+            throw new Exception("Balance insufficient");
+        }
+
+        if (originalAccount.Customer.BankId != request.BankId)
+        {
+            throw new Exception("The bank does not match for the customer");
+        }
 
         originalAccount.Balance -= request.Amount;
 
