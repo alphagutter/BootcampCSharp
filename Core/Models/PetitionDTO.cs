@@ -6,12 +6,15 @@ namespace Core.Models;
 public class PetitionDTO
 {
     public int Id { get; set; }
-       
-    public DateTime RequestDate { get; set; }
-    public DateTime? ApprovalDate { get; set; }
-    public string ProductType { get; set; } = string.Empty;
-    public string Status { get; set; } = string.Empty;
-    public string Currency { get; set; } = null!;
-    public string Customer { get; set; } = null!;
+
+    public string Name { get; set; } = string.Empty;
+    public string DocumentNumber { get; set; } = string.Empty;
+    public string? Address { get; set; }
+    public string? Mail { get; set; }
+    public string? Phone { get; set; }
+    public CurrencyDTO CurrencyDTO { get; set; } = null!;
+    public CustomerDTO CustomerDTO { get; set; } = null!;
+    public ProductDTO ProductDTO { get; set; } = null!;
+    public string? Description { get; set; }
 
 }

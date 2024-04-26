@@ -41,6 +41,7 @@ public class AccountRepository : IAccountRepository
         var createdAccount = await _context.Accounts
             .Include(a => a.Currency)
             .Include(a => a.Customer)
+            .ThenInclude(c => c.Bank)
             .Include(a => a.SavingAccount)
             .Include(a => a.CurrentAccount)
             .FirstOrDefaultAsync(a => a.Id == account.Id);

@@ -13,6 +13,12 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
             .HasName("Product_pkey");
 
         entity
-            .Property(p => p.Type).IsRequired();
+            .Property(p => p.Name)
+            .IsRequired();
+
+        entity
+            .HasMany(product => product.Petitions)
+            .WithOne(petition => petition.Product)
+            .HasForeignKey(applicationForm => applicationForm.ProductId);
     }
 }

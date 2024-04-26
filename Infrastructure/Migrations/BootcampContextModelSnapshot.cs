@@ -393,8 +393,11 @@ namespace Infrastructure.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("ProductId")
+                    b.Property<string>("Description")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("ProductId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("RequestDate")
@@ -429,8 +432,9 @@ namespace Infrastructure.Migrations
                     b.Property<int?>("CustomerId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("integer");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id")
                         .HasName("Product_pkey");
@@ -548,12 +552,6 @@ namespace Infrastructure.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("numeric");
 
-                    b.Property<int>("BankId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("CurrencyId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");
@@ -561,7 +559,16 @@ namespace Infrastructure.Migrations
                     b.Property<int>("DestinationAccountId")
                         .HasColumnType("integer");
 
+                    b.Property<int>("DestinationBankId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("DestinationCurrencyId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("OriginAccountId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TransferStatus")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("TransferredDateTime")
@@ -570,11 +577,11 @@ namespace Infrastructure.Migrations
                     b.HasKey("Id")
                         .HasName("Transfer_pkey");
 
-                    b.HasIndex("BankId");
-
-                    b.HasIndex("CurrencyId");
-
                     b.HasIndex("DestinationAccountId");
+
+                    b.HasIndex("DestinationBankId");
+
+                    b.HasIndex("DestinationCurrencyId");
 
                     b.HasIndex("OriginAccountId");
 
@@ -775,26 +782,26 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Core.Entities.Transfer", b =>
                 {
+                    b.HasOne("Core.Entities.Account", "DestinationAccount")
+                        .WithMany()
+                        .HasForeignKey("DestinationAccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Core.Entities.Bank", "Bank")
                         .WithMany("Transfers")
-                        .HasForeignKey("BankId")
+                        .HasForeignKey("DestinationBankId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Entities.Currency", "Currency")
                         .WithMany("Transfers")
-                        .HasForeignKey("CurrencyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Core.Entities.Account", null)
-                        .WithMany("Transfers")
-                        .HasForeignKey("DestinationAccountId")
+                        .HasForeignKey("DestinationCurrencyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Entities.Account", "OriginAccount")
-                        .WithMany()
+                        .WithMany("Transfers")
                         .HasForeignKey("OriginAccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -802,6 +809,8 @@ namespace Infrastructure.Migrations
                     b.Navigation("Bank");
 
                     b.Navigation("Currency");
+
+                    b.Navigation("DestinationAccount");
 
                     b.Navigation("OriginAccount");
                 });

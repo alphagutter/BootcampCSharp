@@ -10,7 +10,7 @@ public class Product
 {
     public int Id { get; set; }
     //for default, the type will be a Current Account
-    public ProductType Type { get; set; } = ProductType.CurrentAccount;
+    public string Name{ get; set; } = null!;
 
 
     //a list for all the petitions the user requests

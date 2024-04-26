@@ -6,6 +6,7 @@ using Core.Requests.CustomerModel;
 using Infrastructure.Contexts;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Principal;
 namespace Infrastructure.Repositories;
 
 public class CustomerRepository : ICustomerRepository
@@ -112,10 +113,13 @@ public class CustomerRepository : ICustomerRepository
 
         //adaptation
 
-        var customerDTO = customertocreate.Adapt<CustomerDTO>();
+        var customerDTO = await _context.Customers
+            .Include(c => c.Bank)
+            .FirstOrDefaultAsync(a => a.Id == customertocreate.Id);
 
 
-        return customerDTO;
+        return customerDTO.Adapt<CustomerDTO>();
+
     }
 
     /// <summary>
