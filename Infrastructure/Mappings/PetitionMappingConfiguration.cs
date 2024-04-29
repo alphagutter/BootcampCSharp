@@ -13,7 +13,8 @@ public class PetitionMappingConfiguration : IRegister
         //origin to destination(CreatePetitionRequest to Petition)
         config.NewConfig<CreatePetitionRequest, Petition>()
             .Map(dest => dest.CurrencyId, src => src.CurrencyId)
-            .Map(dest => dest.CustomerId, src => src.CustomerId)
+            //.Map(dest => dest.CustomerId, src => src.CustomerId)
+            //.Map(dest => dest.DocumentNumber, src => src.Customer.DocumentNumber)
             .Map(dest => dest.ProductId, src => src.ProductId)
             .Map(dest => dest.Description, src => src.Description);
 
@@ -26,8 +27,8 @@ public class PetitionMappingConfiguration : IRegister
             .Map(dest => dest.Mail, src => src.Customer.Mail)
             .Map(dest => dest.Phone, src => src.Customer.Phone)
             .Map(dest => dest.Description, src => src.Description)
-            .Map(dest => dest.CurrencyDTO, src => src.Currency)
-            .Map(dest => dest.ProductDTO, src => src.Product)
-            .Map(dest => dest.CustomerDTO, src => src.Customer);
+            .Map(dest => dest.Customer, src => src.Customer)
+            .Map(dest => dest.Currency, src => src.Currency)
+            .Map(dest => dest.Product, src => src.Product);
     }
 }

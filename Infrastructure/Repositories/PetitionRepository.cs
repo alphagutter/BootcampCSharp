@@ -46,7 +46,7 @@ namespace Infrastructure.Repositories
 
 
             var existingCustomer = await _context.Customers
-                .FirstOrDefaultAsync(c => c.Id == model.CustomerId);
+                .FirstOrDefaultAsync(c => c.DocumentNumber == model.DocumentNumber);
 
             if (existingCustomer != null)
             {

@@ -11,13 +11,16 @@ public class CreatePetitionRequestValidation : AbstractValidator<CreatePetitionR
     public CreatePetitionRequestValidation()
     {
         RuleFor(petition => petition.CurrencyId)
-            .NotEqual(default(int)).WithMessage("CurrencyId can not be default");
+            .NotEqual(default(int)).WithMessage("CurrencyId can not be default")
+            .NotEmpty().WithMessage("DocumentNumber is required");
 
-        RuleFor(petition => petition.CustomerId)
-            .NotEqual(default(int)).WithMessage("CurrencyId can not be default");
+        RuleFor(petition => petition.DocumentNumber)
+            .NotEqual(default(string)).WithMessage("DocumentNumber can not be default")
+            .NotEmpty().WithMessage("DocumentNumber is required");
 
-        //RuleFor(petition => petition.ProductId)
-        //    .NotEqual(default(int)).WithMessage("ProductId can not be default");
+        RuleFor(petition => petition.ProductId)
+            .NotEqual(default(int)).WithMessage("ProductId can not be default")
+            .NotEmpty().WithMessage("Product is required");
     }
 
 }   

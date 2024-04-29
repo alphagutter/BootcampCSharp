@@ -17,6 +17,7 @@ public class PetitionConfiguration : IEntityTypeConfiguration<Petition>
             .HasOne(petition => petition.Currency)
             .WithMany(currency => currency.Petitions)
             .HasForeignKey(petitions => petitions.CurrencyId);
+
         entity
             .HasOne(petition => petition.Customer)
             .WithMany(customer => customer.Petitions)

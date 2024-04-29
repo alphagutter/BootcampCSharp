@@ -12,9 +12,9 @@ public class PetitionDTO
     public string? Address { get; set; }
     public string? Mail { get; set; }
     public string? Phone { get; set; }
-    public CurrencyDTO CurrencyDTO { get; set; } = null!;
-    public CustomerDTO CustomerDTO { get; set; } = null!;
-    public ProductDTO ProductDTO { get; set; } = null!;
+    public CurrencyDTO Currency { get; set; } = null!;
+    public CustomerDTO Customer { get; set; } = null!;
+    public ProductDTO Product { get; set; } = null!;
     public string? Description { get; set; }
 
 }
