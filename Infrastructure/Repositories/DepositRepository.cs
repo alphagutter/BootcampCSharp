@@ -46,6 +46,39 @@ public class DepositRepository : IDepositRepository
             throw new Exception("The operation exceeds the operational limit.");
         }
 
+
+
+        var totalAmountOperationsOATransfers = _depositContext.Transfers
+                                                 .Where(t => t.OriginAccountId == account.Id &&
+                                                 t.TransferredDateTime.Month == DateTime.Now.Month)
+                                                 .Sum(t => t.Amount);
+
+        //var totalAmountOperationsDATransfers = _depositContext.Transfers
+        //                                 .Where(t => t.DestinationAccountId == account.Id &&
+        //                                 t.TransferredDateTime.Month == DateTime.Now.Month)
+        //                                 .Sum(t => t.Amount);
+
+        var totalAmountOperationsDeposits = _depositContext.Deposits
+                                                 .Where(d => d.AccountId == account.Id &&
+                                                 d.DepositDateTime.Month == DateTime.Now.Month)
+                                                 .Sum(d => d.Amount);
+
+        var totalAmountOperationsExtractions = _depositContext.Extractions
+                                                 .Where(e => e.AccountId == account.Id &&
+                                                 e.ExtractionDateTime.Month == DateTime.Now.Month)
+                                                 .Sum(e => e.Amount);
+
+        var totalAmountOperations = totalAmountOperationsOATransfers 
+            + totalAmountOperationsDeposits + totalAmountOperationsExtractions;
+
+        if ((model.Amount + totalAmountOperations) > account.CurrentAccount!.OperationalLimit)
+        {
+            throw new NotFoundException("The operation exceeds the TOTAL operational limit.");
+        }
+
+
+
+
         //we add the amount to the account's balance
         account.Balance = account.Balance + model.Amount;
         _depositContext.Accounts.Update(account);

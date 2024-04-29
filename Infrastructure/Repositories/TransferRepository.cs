@@ -45,12 +45,20 @@ public class TransferRepository : ITransferRepository
         }
 
 
-
+        if(originAccount.Balance < request.Amount)
+        {
+            throw new Exception("Insufficient Balance");
+        }
 
                                     ///Basic Validations///
         if (originAccount.Type != destinationAccount.Type)
         {
             throw new Exception("It has to be the same account type.");
+        }
+
+        if (originAccount.CurrencyId != destinationAccount.CurrencyId)
+        {
+            throw new Exception("It must be the same currency.");
         }
 
         //it validates the accounts requirements for the transaction
@@ -61,8 +69,10 @@ public class TransferRepository : ITransferRepository
         if (originAccount.Customer.BankId == destinationAccount.Customer.BankId)
         {
             flag = true;
-        }
-        else
+
+            transfer.Bank = destinationAccount.Customer.Bank;
+            transfer.Currency = destinationAccount.Currency;
+        }else
         {
            flag = ValidateAccounts(originAccount, destinationAccount, request.Amount);
 
@@ -84,8 +94,8 @@ public class TransferRepository : ITransferRepository
 
                 
                 //it adds the destination account id to the transfer
-                transfer.DestinationAccountId = destinationAccount.Id;
-                    transfer.DestinationAccount = destinationAccount;
+                //transfer.DestinationAccountId = destinationAccount.Id;
+                    //transfer.DestinationAccount = destinationAccount;
                     _transfercontext.Transfers.Add(transfer);
 
                 await _transfercontext.SaveChangesAsync();
@@ -112,11 +122,6 @@ public class TransferRepository : ITransferRepository
     {
 
 
-        if (originAccount.CurrencyId != destinationAccount.CurrencyId)
-        {
-            throw new Exception("It must be the same currency.");
-        }
-
         if (amount > originAccount.Balance)
         {
             throw new Exception("The transfer amount must not be greater than current account's balance.");
@@ -133,7 +138,59 @@ public class TransferRepository : ITransferRepository
             throw new Exception("The operation exceeds the operational limit.");
         }
 
+        //it will check if one of the account exceeds their operation limit, counting every transactions they made
+        OperationLimitValidation(originAccount, destinationAccount, amount);
+
         return true;
+    }
+
+    public void OperationLimitValidation(Account originAccount, Account destinationAccount, decimal amount) {
+
+        var totalAmountOperationsOATransfers = _transfercontext.Transfers
+                                                                .Where(t => t.OriginAccountId == originAccount.Id &&
+                                                                t.TransferredDateTime.Month == DateTime.Now.Month)
+                                                                .Sum(t => t.Amount);
+
+        var totalAmountOperationsOADeposits = _transfercontext.Deposits
+                                                             .Where(d => d.AccountId == originAccount.Id &&
+                                                             d.DepositDateTime.Month == DateTime.Now.Month)
+                                                             .Sum(d => d.Amount);
+
+        var totalAmountOperationsOAExtractions = _transfercontext.Extractions
+                                                              .Where(e => e.AccountId == originAccount.Id &&
+                                                              e.ExtractionDateTime.Month == DateTime.Now.Month)
+                                                              .Sum(e => e.Amount);
+
+        var totalAmountOperationsOA = totalAmountOperationsOATransfers + totalAmountOperationsOADeposits + 
+            totalAmountOperationsOAExtractions;
+
+        if ((amount + totalAmountOperationsOA) > originAccount.CurrentAccount!.OperationalLimit)
+        {
+            throw new NotFoundException("OriginAccount exceeded the operational limit.");
+        }
+
+        var totalAmountOperationsDATransfers = _transfercontext.Transfers
+                                                 .Where(t => t.DestinationAccountId == destinationAccount.Id &&
+                                                 t.TransferredDateTime.Month == DateTime.Now.Month)
+                                                 .Sum(t => t.Amount);
+
+        var totalAmountOperationsDADeposits = _transfercontext.Deposits
+                                                  .Where(d => d.AccountId == destinationAccount.Id &&
+                                                  d.DepositDateTime.Month == DateTime.Now.Month)
+                                                  .Sum(d => d.Amount);
+
+        var totalAmountOperationsDAExtractions = _transfercontext.Extractions
+                                                  .Where(e => e.AccountId == destinationAccount.Id &&
+                                                  e.ExtractionDateTime.Month == DateTime.Now.Month)
+                                                  .Sum(e => e.Amount);
+
+        var totalAmountOperationsDA = totalAmountOperationsDATransfers + totalAmountOperationsDADeposits + totalAmountOperationsDAExtractions;
+
+        if ((amount + totalAmountOperationsDA) > destinationAccount.CurrentAccount!.OperationalLimit){
+
+            throw new NotFoundException("DestinationAccount exceeded the operational limit.");
+        }
+
     }
 
 }

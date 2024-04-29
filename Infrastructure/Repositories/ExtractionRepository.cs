@@ -5,6 +5,8 @@ using Core.Requests.ExtractionModel;
 using Infrastructure.Contexts;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Security.Principal;
 
 namespace Infrastructure.Repositories;
 
@@ -48,6 +50,44 @@ public class ExtractionRepository : IExtractionRepository
         {
             throw new Exception("The bank does not match for the customer");
         }
+
+
+        if (originalAccount.CurrentAccount != null && request.Amount > originalAccount.CurrentAccount.OperationalLimit)
+        {
+            throw new NotFoundException("The operation exceeds the operational limit.");
+        }
+
+        var totalAmountOperationsOATransfers = _context.Transfers
+                                                 .Where(t => t.OriginAccountId == originalAccount.Id &&
+                                                 t.TransferredDateTime.Month == DateTime.Now.Month)
+                                                 .Sum(t => t.Amount);
+
+        var totalAmountOperationsDATransfers = _context.Transfers
+                                                 .Where(t => t.DestinationAccountId == originalAccount.Id &&
+                                                 t.TransferredDateTime.Month == DateTime.Now.Month)
+                                                 .Sum(t => t.Amount);
+
+        var totalAmountOperationsDeposits = _context.Deposits
+                                                 .Where(d => d.AccountId == originalAccount.Id &&
+                                                 d.DepositDateTime.Month == DateTime.Now.Month)
+                                                 .Sum(d => d.Amount);
+
+        var totalAmountOperationsExtractions = _context.Extractions
+                                                 .Where(e => e.AccountId == originalAccount.Id &&
+                                                 e.ExtractionDateTime.Month == DateTime.Now.Month)
+                                                 .Sum(e => e.Amount);
+
+        var totalAmountOperations = totalAmountOperationsOATransfers + totalAmountOperationsDATransfers + 
+            totalAmountOperationsDeposits + totalAmountOperationsExtractions;
+
+        if ((request.Amount + totalAmountOperations) > originalAccount.CurrentAccount!.OperationalLimit)
+        {
+            throw new NotFoundException("The operation exceeds the TOTAL operational limit.");
+        }
+
+
+
+
 
         originalAccount.Balance -= request.Amount;
 

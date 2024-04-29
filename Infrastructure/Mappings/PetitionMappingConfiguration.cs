@@ -16,7 +16,8 @@ public class PetitionMappingConfiguration : IRegister
             //.Map(dest => dest.CustomerId, src => src.CustomerId)
             //.Map(dest => dest.DocumentNumber, src => src.Customer.DocumentNumber)
             .Map(dest => dest.ProductId, src => src.ProductId)
-            .Map(dest => dest.Description, src => src.Description);
+            .Map(dest => dest.Description, src => src.Description)
+            .Map(dest => dest.RequestDate, src => DateTime.Now);
 
         //origin to destination(Petition to PetitionDTO)
         config.NewConfig<Petition, PetitionDTO>()
