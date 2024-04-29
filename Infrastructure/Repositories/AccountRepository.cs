@@ -27,11 +27,13 @@ public class AccountRepository : IAccountRepository
         if (account.Type == AccountType.Saving)
         {
             account.SavingAccount = model.CreateSavingAccount.Adapt<SavingAccount>();
+            account.CurrentAccount = null;
         }
 
         if (account.Type == AccountType.Current)
         {
             account.CurrentAccount = model.CreateCurrentAccount.Adapt<CurrentAccount>();
+            account.SavingAccount = null;
         }
 
         _context.Accounts.Add(account);

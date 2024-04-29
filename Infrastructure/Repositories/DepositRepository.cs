@@ -28,6 +28,7 @@ public class DepositRepository : IDepositRepository
                                       .Include(a => a.Customer)
                                       .ThenInclude(c => c.Bank)
                                       .Include(a => a.CurrentAccount)
+                                      .Include(a => a.SavingAccount)
                                       .FirstOrDefaultAsync(a => a.Id == model.AccountId);
 
         if (account == null) throw new NotFoundByIdException("Account", model.AccountId);
@@ -41,7 +42,7 @@ public class DepositRepository : IDepositRepository
 
         if (deposit.Amount <= 0) throw new Exception("Amount must not be 0 or lower");
 
-        if (account.CurrentAccount != null && model.Amount > account.CurrentAccount.OperationalLimit)
+        if ((account.CurrentAccount != null) && (model.Amount > account.CurrentAccount.OperationalLimit))
         {
             throw new Exception("The operation exceeds the operational limit.");
         }
@@ -71,7 +72,7 @@ public class DepositRepository : IDepositRepository
         var totalAmountOperations = totalAmountOperationsOATransfers 
             + totalAmountOperationsDeposits + totalAmountOperationsExtractions;
 
-        if ((model.Amount + totalAmountOperations) > account.CurrentAccount!.OperationalLimit)
+        if ((account.CurrentAccount != null) && ((model.Amount + totalAmountOperations) > account.CurrentAccount!.OperationalLimit))
         {
             throw new NotFoundException("The operation exceeds the TOTAL operational limit.");
         }

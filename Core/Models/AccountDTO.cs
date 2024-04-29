@@ -10,7 +10,7 @@ public class AccountDTO
     public string Holder { get; set; } = string.Empty;
     public string Number { get; set; } = string.Empty;
     public decimal Balance { get; set; }
-    public AccountType Type { get; set; } = AccountType.Current;
+    public AccountType Type { get; set; }
     public CurrencyDTO Currency { get; set; } = null!;
     public CustomerDTO Customer { get; set; } = null!;
     public string Status { get; set; } = string.Empty;
